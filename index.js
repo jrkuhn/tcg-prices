@@ -5,6 +5,7 @@ director    = require('director');
 cool        = require('cool-ascii-faces');
 bot         = require('./bot.js');
 
+//create router
 router = new director.http.Router({
   '/' : {
     post: bot.respond,
@@ -12,12 +13,14 @@ router = new director.http.Router({
   }
 });
 
+//create server
 server = http.createServer(function (req, res) {
   req.chunks = [];
   req.on('data', function (chunk) {
     req.chunks.push(chunk.toString());
   });
 
+  //create server with router
   router.dispatch(req, res, function(err) {
     res.writeHead(err.status, {"Content-Type": "text/plain"});
     res.end(err.message);
