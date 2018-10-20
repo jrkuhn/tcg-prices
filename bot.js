@@ -36,6 +36,7 @@ function postMessage() {
 
   console.log('sending ' + botResponse + ' to ' + botID);
 
+  //POST to groupme
   botReq = HTTPS.request(options, function(res) {
       if(res.statusCode == 202) {
         //neat
