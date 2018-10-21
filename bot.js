@@ -7,12 +7,22 @@ function respond() {
   var request = JSON.parse(this.req.chunks[0]),
       botRegex = /^\/cool guy$/;
 
-  if(request.text && botRegex.test(request.text)) {
-    this.res.writeHead(200);
-    postMessage();
-    this.res.end();
+  if(request.text) {
+    switch(true) {
+      case botRegex.test(request.text):
+        this.res.writeHead(200);
+        postMessage();
+        this.res.end();
+        break;
+      default:
+        console.log("no matching command");
+        this.res.writeHead(200);
+        this.res.end();
+        break;
+    }
+    
   } else {
-    console.log("don't care");
+    console.log("no command");
     this.res.writeHead(200);
     this.res.end();
   }
