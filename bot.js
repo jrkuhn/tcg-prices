@@ -6,7 +6,7 @@ var botID = process.env.BOT_ID;
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
       coolRegex = /\/cool guy$/;
-      cardRegex = /\.tcgprice (.*)$/;
+      cardRegex = /\/tcgprice (.*)$/;
 
   if(request.text) {
     switch(true) {
@@ -39,6 +39,9 @@ function respond() {
 function postMessage(msg) {
   var options, body, botReq;
 
+  if (msg.equals("Infinite Impermanence")) {
+    msg = "Fuck, like a lot";
+  }
   options = {
     hostname: 'api.groupme.com',
     path: '/v3/bots/post',
