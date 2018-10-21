@@ -5,13 +5,21 @@ var botID = process.env.BOT_ID;
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
-      botRegex = /^\/cool guy$/;
+      coolRegex = /\/cool guy$/;
+      cardRegex = /\.tcgprice (.*)$/;
 
   if(request.text) {
     switch(true) {
-      case botRegex.test(request.text):
+      case coolRegex.test(request.text):
         this.res.writeHead(200);
-        postMessage();
+        botMsg = cool();
+        postMessage(botMsg);
+        this.res.end();
+        break;
+      case cardRegex.test(request.text):
+        this.res.writeHead(200);
+        cardName = request.text.match(cardRegex);
+        postMessage(cardName[1]);
         this.res.end();
         break;
       default:
@@ -28,10 +36,8 @@ function respond() {
   }
 }
 
-function postMessage() {
-  var botResponse, options, body, botReq;
-
-  botResponse = cool();
+function postMessage(msg) {
+  var options, body, botReq;
 
   options = {
     hostname: 'api.groupme.com',
@@ -41,10 +47,10 @@ function postMessage() {
 
   body = {
     "bot_id" : botID,
-    "text" : botResponse
+    "text" : msg
   };
 
-  console.log('sending ' + botResponse + ' to ' + botID);
+  console.log('sending ' + msg + ' to ' + botID);
 
   //POST to groupme
   botReq = HTTPS.request(options, function(res) {
