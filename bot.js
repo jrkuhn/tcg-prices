@@ -12,14 +12,14 @@ function respond() {
     switch(true) {
       case coolRegex.test(request.text):
         this.res.writeHead(200);
-        botMsg = cool();
-        postMessage(botMsg);
+        coolMsg = cool();
+        postMessage(coolMsg);
         this.res.end();
         break;
       case cardRegex.test(request.text):
         this.res.writeHead(200);
         cardName = request.text.match(cardRegex);
-        postMessage(cardName[1] + "?, like a lot");
+        handleCard(cardName[1]);
         this.res.end();
         break;
       default:
@@ -34,6 +34,10 @@ function respond() {
     this.res.writeHead(200);
     this.res.end();
   }
+}
+
+function handleCard(name) {
+  postMessage(name + "? \nIdk man, like, a lot I guess");
 }
 
 function postMessage(msg) {
