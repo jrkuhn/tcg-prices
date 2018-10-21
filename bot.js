@@ -19,7 +19,7 @@ function respond() {
       case cardRegex.test(request.text):
         this.res.writeHead(200);
         cardName = request.text.match(cardRegex);
-        postMessage(cardName[1]);
+        postMessage(cardName[1] + "?, like a lot");
         this.res.end();
         break;
       default:
@@ -39,9 +39,6 @@ function respond() {
 function postMessage(msg) {
   var options, body, botReq;
 
-  if (msg.equals("Infinite Impermanence")) {
-    msg = "Fuck, like a lot";
-  }
   options = {
     hostname: 'api.groupme.com',
     path: '/v3/bots/post',
