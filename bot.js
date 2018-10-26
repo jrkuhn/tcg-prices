@@ -6,8 +6,9 @@ var botID = process.env.BOT_ID;
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
       coolRegex = /\/cool guy$/;
-      cardRegex = /\/tcgprice (.*)$/;
-
+      cardRegex = /[./#?$]?[tT]cgpric[es][es]? (.*)/;
+      linkRegex = /[./#?$]?[tT]cglink (.*)/;
+      
   if(request.text) {
     switch(true) {
       case coolRegex.test(request.text):
@@ -22,6 +23,11 @@ function respond() {
         handleCard(cardName[1]);
         this.res.end();
         break;
+      case linkRegex.test(request.text):
+        this.res.writeHead(200);
+        cardName = request.text.match(linkRegex);
+        handleLink(cardName[1]);
+        this.res.end();
       default:
         console.log("no matching command");
         this.res.writeHead(200);
@@ -37,7 +43,12 @@ function respond() {
 }
 
 function handleCard(name) {
-  postMessage(name + "? \nIdk man, like, a lot I guess");
+  postMessage(">" + name + "? \nIdk man, like, a lot I guess");
+}
+
+function handleLink(name) {
+  name = name.replace(/\s/g , "+");
+  postMessage(">.https://shop.tcgplayer.com/yugioh/product/show?ProductName="+name+"&Price_Condition=Less+Than");
 }
 
 function postMessage(msg) {
