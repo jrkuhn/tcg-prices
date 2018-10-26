@@ -6,8 +6,8 @@ var botID = process.env.BOT_ID;
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
       coolRegex = /\/cool guy$/;
-      cardRegex = /[./#?$]?[tT]cgpric[es][es]? (.*)/;
-      linkRegex = /[./#?$]?[tT]cglink (.*)/;
+      cardRegex = /[./#?$]{1}[tT]cgpric[es][es]? (.*)/;
+      linkRegex = /[./#?$]{1}[tT]cglink (.*)/;
       
   if(request.text) {
     switch(true) {
