@@ -64,3 +64,5 @@ function searchName(name) {
       //print name and price to 'msg'
   });
 }
+
+exports.searchName = searchName;
