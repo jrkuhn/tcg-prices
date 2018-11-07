@@ -7,7 +7,7 @@ require('dotenv').config();
 var botID = process.env.BOT_ID;
 var pubKey = process.env.PUBLIC_KEY;
 var prvKey = process.env.PRIVATE_KEY;
-var bearer = process.env.BEARER_TOKEN; 
+var bearer = 'Bearer '+process.env.BEARER_TOKEN; 
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
