@@ -2,6 +2,8 @@ var HTTPS = require('https');
 var cool = require('cool-ascii-faces');
 var handler = require('./handler');
 
+require('dotenv').config();
+
 var botID = process.env.BOT_ID;
 var pubKey = process.env.PUBLIC_KEY;
 var prvKey = process.env.PRIVATE_KEY;

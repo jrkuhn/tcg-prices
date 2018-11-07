@@ -2,6 +2,8 @@ var HTTPS = require('https');
 var request = require('request');
 var bot = require('./bot');
 
+require('dotenv').config();
+
 var botID = process.env.BOT_ID;
 var pubKey = process.env.PUBLIC_KEY;
 var prvKey = process.env.PRIVATE_KEY;
