@@ -5,7 +5,7 @@ var bot = require('./bot');
 var botID = process.env.BOT_ID;
 var pubKey = process.env.PUBLIC_KEY;
 var prvKey = process.env.PRIVATE_KEY;
-var bearer = process.env.BEARER_TOKEN;
+var bearer = "Bearer " + process.env.BEARER_TOKEN;
 var tcgver = process.env.TCG_VERSION;
 
 function updateToken() {
@@ -22,7 +22,7 @@ function getSearchManifest() {
     headers: 
     { 'Postman-Token': 'e8a67b46-ef0a-4848-851a-fffb6f696b6e',
       'cache-control': 'no-cache',
-      Authorization: 'Bearer ' + bearer 
+      Authorization: bearer 
     } 
   };
 
@@ -44,7 +44,7 @@ function searchName(name) {
       'cache-control': 'no-cache',
       'Content-Type': 'application/json',
       Accept: 'application/json',
-      Authorization: 'Bearer ' + bearer },
+      Authorization: bearer },
     body: 
     { sort: 'MinPrice DESC',
       limit: 100,
