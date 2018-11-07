@@ -23,7 +23,7 @@ function getDetails(productId) {
     "hostname": "api.tcgplayer.com",
     "path": "/catalog/products/102453",
     "headers": {
-      "Authorization": "Bearer 13UCB0QBEPKwdPlMHBhqglRnpHuWHiTcX3prG2d7GIpfztC3knoGn9jQgyYtORcTudNZh8SmE9v9MNB_wL4e5b9Aciw0lg_RSOrM9PEYfHIg5MsuqUvQV1xmyeFZOPzYgTnihgLSpsaZJEh7pihVe8DJSWVVmKfS_vzLE8_e3UUQzzjEPh8I4aX6krBNzhsLSeyl05YR-ToOgufNTyVKrPduPFl9O4UNh29hQBhm9IhcakyajcbLkx96lLsNFDJcb-ZkiCnEPHdcZ4tIZPD_zxOnen-Md26fTbnmNizfORyP7-bZKPfcvXG95WgTXkVk3aHlAA",
+      "Authorization": process.env.BEARER_TOKEN,
       "Accept": "application/json",
       "Content-Type": "application/json",
       "cache-control": "no-cache",
