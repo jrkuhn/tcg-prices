@@ -17,6 +17,7 @@ function updateToken() {
 
 function getDetails(productId) {
   var options, response;
+  console.log('DETAIL: ' + bearer);
 
   var http = require("http");
 
@@ -51,6 +52,7 @@ function getDetails(productId) {
 
 function searchName(name) {
   var options, response;
+  console.log('SEARCH: ' + bearer);
 
   options = { 
     method: 'POST',
