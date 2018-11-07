@@ -44,7 +44,7 @@ function searchName(name) {
       'cache-control': 'no-cache',
       'Content-Type': 'application/json',
       Accept: 'application/json',
-      'Authorization': bearer },
+      Authorization: process.env.BEARER_TOKEN },
     body: 
     { sort: 'MinPrice DESC',
       limit: 100,
