@@ -1,6 +1,6 @@
 var HTTPS = require('https');
 var cool = require('cool-ascii-faces');
-var handler = require('./handler.js');
+var handler = require('./handler');
 
 var botID = process.env.BOT_ID;
 var pubKey = process.env.PUBLIC_KEY;
