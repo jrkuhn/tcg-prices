@@ -47,7 +47,8 @@ function respond() {
 }
 
 function handleCard(name) {
-  handler.searchName(name);
+  var prodIds = handler.searchName(name);
+  console.log(prodIds);
   postMessage(">" + name + "? \nIdk man, like, a lot I guess");
 }
 
