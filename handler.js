@@ -53,17 +53,23 @@ function searchName(name) {
     json: true 
   };
 
-  request(options, function (error, response, body) {
-    if (error) throw new Error(error);
-    response = body;
-    console.log(body);
+  return new Promise(resolve => {
+    request(options, function (error, response, body) {
+      if (error) {
+        throw new Error(error);
+      } 
+      else {
+        console.log(body);
+        resolve(JSON.parse(body));
+      }
+      
 
-    //DO IN BOT.HANDLECARD
-    //for each result[i].lowprice != null
-      //find product id name + [0] image + upload and save img address
-      //print name and price to 'msg'
+      //DO IN BOT.HANDLECARD
+      //for each result[i].lowprice != null
+        //find product id name + [0] image + upload and save img address
+        //print name and price to 'msg'
+    });
   });
-  return response.results;
 }
 
 exports.searchName = searchName;

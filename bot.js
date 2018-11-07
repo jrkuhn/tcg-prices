@@ -47,8 +47,8 @@ function respond() {
 }
 
 function handleCard(name) {
-  var prodIds = handler.searchName(name);
-  console.log(prodIds);
+  const searchProm = await handler.searchName(name);
+  console.log(searchProm);
   postMessage(">" + name + "? \nIdk man, like, a lot I guess");
 }
 
