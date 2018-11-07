@@ -1,6 +1,6 @@
 var HTTPS = require('https');
 var request = require('request');
-var bot = require('./bot.js');
+var bot = require('./bot');
 
 var botID = process.env.BOT_ID;
 var pubKey = process.env.PUBLIC_KEY;
