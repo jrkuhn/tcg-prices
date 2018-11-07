@@ -7,7 +7,7 @@ require('dotenv').config();
 var botID = process.env.BOT_ID;
 var pubKey = process.env.PUBLIC_KEY;
 var prvKey = process.env.PRIVATE_KEY;
-var bearer = 'Bearer '+process.env.BEARER_TOKEN; 
+var bearer = process.env.BEARER_TOKEN; 
 var tcgver = process.env.TCG_VERSION;
 
 function updateToken() {
@@ -26,7 +26,7 @@ function getDetails(productId) {
     "hostname": "api.tcgplayer.com",
     "path": "/catalog/products/102453",
     "headers": {
-      "Authorization": 'Bearer ' + process.env.BEARER_TOKEN,
+      "Authorization": process.env.BEARER_TOKEN,
       "Accept": "application/json",
       "Content-Type": "application/json",
       "cache-control": "no-cache",
