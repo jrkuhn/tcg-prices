@@ -1,7 +1,11 @@
 var HTTPS = require('https');
 var cool = require('cool-ascii-faces');
+var handler = require('./handler.js');
 
 var botID = process.env.BOT_ID;
+var pubKey = process.env.PUBLIC_KEY;
+var prvKey = process.env.PRIVATE_KEY;
+var bearer = process.env.BEARER_TOKEN; 
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
@@ -43,6 +47,7 @@ function respond() {
 }
 
 function handleCard(name) {
+  handler.searchName(name);
   postMessage(">" + name + "? \nIdk man, like, a lot I guess");
 }
 
