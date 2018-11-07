@@ -49,9 +49,8 @@ function respond() {
 }
 
 async function handleCard(name) {
-  console.log(bearer);
-  handler.getDetails();
-  //const searchProm = await handler.searchName(name);
+  const detailsProm = handler.getDetails();
+  const searchProm = await handler.searchName(name);
   //console.log(searchProm);
   postMessage(">" + name + "? \nIdk man, like, a lot I guess");
 }
