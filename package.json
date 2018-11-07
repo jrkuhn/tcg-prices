@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "director": "",
+    "dotenv": "",
     "request": "",
     "cool-ascii-faces": "~1.3.x"
   },
