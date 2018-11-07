@@ -13,24 +13,46 @@ function updateToken() {
   //process.env.BEARER_TOKEN = access_token
 }
 
-function getSearchManifest() {
+function getDetails(productId) {
   var options, response;
 
-  options = { 
-    method: 'GET',
-    url: 'http://api.tcgplayer.com/v1.9.0/catalog/categories/2/search/manifest',
-    headers: 
-    { 'Postman-Token': 'e8a67b46-ef0a-4848-851a-fffb6f696b6e',
-      'cache-control': 'no-cache',
-      Authorization: bearer 
-    } 
-  };
+  var http = require("http");
 
-  request(options, function (error, response, body) {
-    if (error) throw new Error(error);
-    response = body;
-    console.log(body);
+  var options = {
+    "method": "GET",
+    "hostname": [
+      "api",
+      "tcgplayer",
+      "com"
+    ],
+    "path": [
+      "catalog",
+      "products",
+      "102453"
+    ],
+    "headers": {
+      "Authorization": "Bearer 13UCB0QBEPKwdPlMHBhqglRnpHuWHiTcX3prG2d7GIpfztC3knoGn9jQgyYtORcTudNZh8SmE9v9MNB_wL4e5b9Aciw0lg_RSOrM9PEYfHIg5MsuqUvQV1xmyeFZOPzYgTnihgLSpsaZJEh7pihVe8DJSWVVmKfS_vzLE8_e3UUQzzjEPh8I4aX6krBNzhsLSeyl05YR-ToOgufNTyVKrPduPFl9O4UNh29hQBhm9IhcakyajcbLkx96lLsNFDJcb-ZkiCnEPHdcZ4tIZPD_zxOnen-Md26fTbnmNizfORyP7-bZKPfcvXG95WgTXkVk3aHlAA",
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      "cache-control": "no-cache",
+      "Postman-Token": "0612dda3-572f-4af4-80b3-55d544c29400"
+    }
+  };
+  
+  var req = http.request(options, function (res) {
+    var chunks = [];
+  
+    res.on("data", function (chunk) {
+      chunks.push(chunk);
+    });
+  
+    res.on("end", function () {
+      var body = Buffer.concat(chunks);
+      console.log(body.toString());
+    });
   });
+  
+  req.end();
 }
 
 function searchName(name) {
@@ -44,7 +66,7 @@ function searchName(name) {
       'cache-control': 'no-cache',
       'Content-Type': 'application/json',
       Accept: 'application/json',
-      Authorization: process.env.BEARER_TOKEN },
+      Authorization: 'Bearer 13UCB0QBEPKwdPlMHBhqglRnpHuWHiTcX3prG2d7GIpfztC3knoGn9jQgyYtORcTudNZh8SmE9v9MNB_wL4e5b9Aciw0lg_RSOrM9PEYfHIg5MsuqUvQV1xmyeFZOPzYgTnihgLSpsaZJEh7pihVe8DJSWVVmKfS_vzLE8_e3UUQzzjEPh8I4aX6krBNzhsLSeyl05YR-ToOgufNTyVKrPduPFl9O4UNh29hQBhm9IhcakyajcbLkx96lLsNFDJcb-ZkiCnEPHdcZ4tIZPD_zxOnen-Md26fTbnmNizfORyP7-bZKPfcvXG95WgTXkVk3aHlAA' },
     body: 
     { sort: 'MinPrice DESC',
       limit: 100,
@@ -73,3 +95,4 @@ function searchName(name) {
 }
 
 exports.searchName = searchName;
+exports.getDetails = getDetails;
