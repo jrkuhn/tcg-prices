@@ -1,5 +1,5 @@
 var HTTPS = require('https');
-var request = required('request');
+var request = require('request');
 var bot = require('./bot.js');
 
 var botID = process.env.BOT_ID;
