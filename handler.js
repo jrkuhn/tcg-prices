@@ -78,13 +78,13 @@ function searchName(name) {
         throw new Error(error);
       } 
       else {
-        console.log("SEARCH: " + body.toString());
+        console.log(body);
         resolve(body);
       }
 
       //DO IN BOT.HANDLECARD
-      //for each result[i].lowprice != null
-        //find product id name + [0] image + upload and save img address
+      //for each result[i].lowprice != null //response contains prices for rarities that might not exist
+        //retrieve product id name + [0] image + upload and save img address
         //print name and price to 'msg'
     });
   });
@@ -116,16 +116,6 @@ function getPrices(productId) {
         console.log("PRICES: " + body.toString());
         resolve(body);
       }
-      // var chunks = [];
-  
-      // res.on("data", function (chunk) {
-      //   chunks.push(chunk);
-      // });
-  
-      // res.on("end", function () {
-      //   var body = Buffer.concat(chunks);
-      //   console.log("PRICES: " + body.toString());
-      // });
     });
     // req.end();
   });
