@@ -15,15 +15,17 @@ function updateToken() {
   //process.env.BEARER_TOKEN = access_token
 }
 
+//get product details derived from productID's
 function getDetails(productId) {
   var options, response;
 
   var http = require("http");
+  let path = "/catalog/products/" + productId;
 
   var options = {
     "method": "GET",
     "hostname": "api.tcgplayer.com",
-    "path": "/catalog/products/102453",
+    "path": path,
     "headers": {
       "Authorization": process.env.BEARER_TOKEN,
       "Accept": "application/json",
@@ -49,6 +51,7 @@ function getDetails(productId) {
   req.end();
 }
 
+//advanced search
 function searchName(name) {
   var options, response;
 
@@ -78,7 +81,6 @@ function searchName(name) {
         console.log(body);
         resolve(body);
       }
-      
 
       //DO IN BOT.HANDLECARD
       //for each result[i].lowprice != null
@@ -86,7 +88,10 @@ function searchName(name) {
         //print name and price to 'msg'
     });
   });
+
 }
+
+
 
 exports.searchName = searchName;
 exports.getDetails = getDetails;
