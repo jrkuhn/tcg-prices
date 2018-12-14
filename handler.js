@@ -95,21 +95,11 @@ function getPrices(productId) {
   var options, response;
 
   var http = require("http");
-  let path = "/v1.9.0/pricing/product/" + productId;
+  let url = "http://api.tcgplayer.com/v1.17.0/pricing/product/productIds/" + productId;
 
   var options = {
     "method": "GET",
-    "hostname": [
-      "api",
-      "tcgplayer",
-      "com"
-    ],
-    "path": [
-      "v1.9.0",
-      "pricing",
-      "product",
-      "83461,101491,130325,138608"
-    ],
+    "url": url,
     "headers": {
       "Authorization": bearer,
       "cache-control": "no-cache",
