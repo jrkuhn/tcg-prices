@@ -78,7 +78,7 @@ function searchName(name) {
         throw new Error(error);
       } 
       else {
-        console.log(body);
+        console.log("SEARCH: " + body);
         resolve(body);
       }
 
@@ -108,26 +108,26 @@ function getPrices(productId) {
   };
 
   return new Promise(resolve => {
-    var req = request(options, function (error, res, body) {
+    var req = request(options, function (error, response, body) {
       if (error) {
         throw new Error(error);
       } 
-      // else {
-      //   console.log(body);
-      //   resolve(body);
-      // }
-      var chunks = [];
-  
-      res.on("data", function (chunk) {
-        chunks.push(chunk);
-      });
-  
-      res.on("end", function () {
-        var body = Buffer.concat(chunks);
+      else {
         console.log("PRICES: " + body.toString());
-      });
+        resolve(body);
+      }
+      // var chunks = [];
+  
+      // res.on("data", function (chunk) {
+      //   chunks.push(chunk);
+      // });
+  
+      // res.on("end", function () {
+      //   var body = Buffer.concat(chunks);
+      //   console.log("PRICES: " + body.toString());
+      // });
     });
-    req.end();
+    // req.end();
   });
   
 }
