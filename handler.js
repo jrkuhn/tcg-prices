@@ -112,20 +112,20 @@ function getPrices(productId) {
       if (error) {
         throw new Error(error);
       } 
-      else {
-        console.log(body);
-        resolve(body);
-      }
-      // var chunks = [];
+      // else {
+      //   console.log(body);
+      //   resolve(body);
+      // }
+      var chunks = [];
   
-      // res.on("data", function (chunk) {
-      //   chunks.push(chunk);
-      // });
+      res.on("data", function (chunk) {
+        chunks.push(chunk);
+      });
   
-      // res.on("end", function () {
-      //   var body = Buffer.concat(chunks);
-      //   console.log("PRICES: " + body.toString());
-      // });
+      res.on("end", function () {
+        var body = Buffer.concat(chunks);
+        console.log("PRICES: " + body.toString());
+      });
     });
     req.end();
   });
