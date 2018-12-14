@@ -51,6 +51,7 @@ function respond() {
 async function handleCard(name) {
   const detailsProm = handler.getDetails(102453);
   const searchProm = await handler.searchName(name);
+  const priceProm = await handler.getPrices(102453);
   //console.log(searchProm);
   postMessage(">" + name + "? \nIdk man, like, a lot I guess");
 }
