@@ -78,7 +78,7 @@ function searchName(name) {
         throw new Error(error);
       } 
       else {
-        console.log("SEARCH: " + body);
+        console.log("SEARCH: " + body.toString());
         resolve(body);
       }
 
@@ -95,7 +95,7 @@ function getPrices(productId) {
   var options, response;
 
   var http = require("http");
-  let url = "http://api.tcgplayer.com/v1.17.0/pricing/product/productIds/" + productId;
+  let url = "http://api.tcgplayer.com/v1.17.0/pricing/product/" + productId;
 
   var options = {
     "method": "GET",
