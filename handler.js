@@ -44,7 +44,7 @@ function getDetails(productId) {
   
     res.on("end", function () {
       var body = Buffer.concat(chunks);
-      console.log(body.toString());
+      console.log("DETAILS: " + body.toString());
     });
   });
   
@@ -91,7 +91,50 @@ function searchName(name) {
 
 }
 
+function getPrices(productId) {
+  var options, response;
+
+  var http = require("http");
+  let path = "/v1.9.0/pricing/product/" + productId;
+
+  var options = {
+    "method": "GET",
+    "hostname": [
+      "api",
+      "tcgplayer",
+      "com"
+    ],
+    "path": [
+      "v1.9.0",
+      "pricing",
+      "product",
+      "83461,101491,130325,138608"
+    ],
+    "headers": {
+      "Authorization": bearer,
+      "cache-control": "no-cache",
+      "Postman-Token": "8a96070b-186c-41f1-b555-084096b0aa54"
+    }
+  };
+
+  var req = http.request(options, function (res) {
+    var chunks = [];
+
+    res.on("data", function (chunk) {
+      chunks.push(chunk);
+    });
+
+    res.on("end", function () {
+      var body = Buffer.concat(chunks);
+      console.log("PRICES: " + body.toString());
+    });
+  });
+
+  req.end();
+}
+
 
 
 exports.searchName = searchName;
 exports.getDetails = getDetails;
+exports.getPrices = getPrices;
