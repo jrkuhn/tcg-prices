@@ -107,20 +107,29 @@ function getPrices(productId) {
     }
   };
 
-  var req = http.request(options, function (res) {
-    var chunks = [];
-
-    res.on("data", function (chunk) {
-      chunks.push(chunk);
+  return new Promise(resolve => {
+    var req = request(options, function (error, res, body) {
+      if (error) {
+        throw new Error(error);
+      } 
+      else {
+        console.log(body);
+        resolve(body);
+      }
+      // var chunks = [];
+  
+      // res.on("data", function (chunk) {
+      //   chunks.push(chunk);
+      // });
+  
+      // res.on("end", function () {
+      //   var body = Buffer.concat(chunks);
+      //   console.log("PRICES: " + body.toString());
+      // });
     });
-
-    res.on("end", function () {
-      var body = Buffer.concat(chunks);
-      console.log("PRICES: " + body.toString());
-    });
+    req.end();
   });
-
-  req.end();
+  
 }
 
 
