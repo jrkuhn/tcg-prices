@@ -1,6 +1,6 @@
-var HTTPS = require('https');
-var request = require('request');
-var bot = require('./bot');
+import HTTPS from 'https';
+import request from 'request';
+import bot from './bot';
 
 require('dotenv').config();
 
@@ -82,10 +82,6 @@ function searchName(name) {
         resolve(body);
       }
 
-      //DO IN BOT.HANDLECARD
-      //for each result[i].lowprice != null //response contains prices for rarities that might not exist
-        //retrieve product id name + [0] image + upload and save img address
-        //print name and price to 'msg'
     });
   });
 
@@ -117,7 +113,11 @@ function getPrices(productId) {
         resolve(body);
       }
     });
-    // req.end();
+
+    //DO IN BOT.HANDLECARD
+      //for each result[i].lowprice != null //response contains prices for rarities that might not exist
+        //GET details product id name + [0] image + upload and save img address
+        //print name and price to 'msg'
   });
   
 }
