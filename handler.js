@@ -20,12 +20,13 @@ function getDetails(productId) {
   var options, response;
 
   var http = require("http");
-  let path = "/catalog/products/" + productId;
+  let url = "http://api.tcgplayer.com/catalog/products/" + productId;
 
   var options = {
     "method": "GET",
-    "hostname": "api.tcgplayer.com",
-    "path": path,
+    "url": url,
+    // "hostname": "api.tcgplayer.com",
+    // "path": path,
     "headers": {
       "Authorization": process.env.BEARER_TOKEN,
       "Accept": "application/json",
@@ -35,20 +36,31 @@ function getDetails(productId) {
     }
   };
   
-  var req = http.request(options, function (res) {
-    var chunks = [];
-  
-    res.on("data", function (chunk) {
-      chunks.push(chunk);
-    });
-  
-    res.on("end", function () {
-      var body = Buffer.concat(chunks);
-      console.log("DETAILS: " + body.toString());
+  return new Promise(resolve => {
+    request(options, function (error, response, body) {
+      if (error) {
+        throw new Error(error);
+      } 
+      else {
+        console.log("DETAILS: " + body.toString());
+        resolve(body);
+      }
     });
   });
+
+  // var req = http.request(options, function (res) {
+    // var chunks = [];
   
-  req.end();
+    // res.on("data", function (chunk) {
+    //   chunks.push(chunk);
+    // });
+  
+    // res.on("end", function () {
+    //   var body = Buffer.concat(chunks);
+    //   console.log("DETAILS: " + body.toString());
+    // });
+  // });
+  //req.end();
 }
 
 //advanced search
@@ -57,7 +69,7 @@ function searchName(name) {
 
   options = { 
     method: 'POST',
-    url: 'http://api.tcgplayer.com/v1.9.0/catalog/categories/2/search',
+    url: 'http://api.tcgplayer.com/v1.17.0/catalog/categories/2/search',
     headers: 
     { 'Postman-Token': 'ab2f1322-dd36-4b9f-a7cd-b298294ad799',
       'cache-control': 'no-cache',
@@ -81,11 +93,6 @@ function searchName(name) {
         console.log(body);
         resolve(body);
       }
-
-      //DO IN BOT.HANDLECARD
-      //for each result[i].lowprice != null //response contains prices for rarities that might not exist
-        //retrieve product id name + [0] image + upload and save img address
-        //print name and price to 'msg'
     });
   });
 
@@ -117,11 +124,13 @@ function getPrices(productId) {
         resolve(body);
       }
     });
-    // req.end();
+    //DO IN BOT.HANDLECARD
+      //for each results[i].lowprice != null //response contains prices for rarities that might not exist
+        //retrieve product id name + [0] image + upload and save img address
+        //print name and price to 'msg'
   });
   
 }
-
 
 
 exports.searchName = searchName;
