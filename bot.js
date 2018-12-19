@@ -1,6 +1,6 @@
-import HTTPS from 'https';
-import cool from 'cool-ascii-faces';
-import handler from './handler';
+var HTTPS = require('https');
+var cool = require('cool-ascii-faces');
+var handler = require('./handler');
 
 require('dotenv').config();
 
