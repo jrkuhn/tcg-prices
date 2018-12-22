@@ -54,12 +54,10 @@ async function handleCard(name) {
 
   var message = ">" + name;
   var numPrices = prices.results.length;
-  var seenProducts = [];
   if(numPrices > 0) {
     for(i = 0; i < numPrices; i++) {
       if(!seenProducts.includes(prices.results[i].productId)){
-        seenProducts.push(prices.results[i].productId);
-        message += "\nlow:$" + prices.results[i].lowPrice + "  market:$" + prices.results[i].lowPrice;  
+        message += "\n[" + prices.results[i].subTypeName + "] low:$" + prices.results[i].lowPrice + "  market:$" + prices.results[i].lowPrice;  
       }
     }
   }
