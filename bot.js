@@ -49,7 +49,7 @@ function respond() {
 }
 
 async function handleCard(name) {
-  var prices = handler.deliverPrices(name);
+  var prices = await handler.deliverPrices(name);
   console.log(prices);
   // const searchProm = handler.searchName(name);
   // const detailsProm = handler.getDetails(102453);
