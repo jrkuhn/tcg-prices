@@ -134,7 +134,7 @@ function getPrices(productId) {
 
 
 function deliverPrices(name) {
-  searchName(name).then(JSON.parse, err)
+  searchName(name).then(JSON.parse)
   .then(function(productID) {
     console.log("DELIVERY-Id:");
     console.log(productId);
