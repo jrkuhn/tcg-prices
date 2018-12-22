@@ -119,16 +119,18 @@ function getPrices(productId) {
 
 function deliverPrices(name) {
   searchName(name)
-  .then(function(productID) {
+  .then(function(productID) { //shortend to .then(getPrices())
     console.log("DELIVERY-Id:");
     console.log(productID.results);
+    return getPrices(productID.results);
+  })
+  .then(function(resp) {
     var validPrices = {};
     validPrices["prices"];
-    var resp = getPrices(productID.results);
-    var prices = JSON.parse(resp)
+    var prices = JSON.parse(resp);
 
     var numPrices = prices.results.length;
-    if(numPrices > 0 && prices.success == true) {
+    if(numPrices > 0) {
       for(i = 0; i < numPrices; i++) {
         if(prices.results[i].lowPrice != null){
           validPrices["prices"].push(prices.results[i]);
@@ -137,10 +139,6 @@ function deliverPrices(name) {
     }
     console.log(validPrices);
     return validPrices;
-  })
-  .then(function(resp) {
-    var prices = JSON.parse(resp);
-
   }).catch(function(err) {
     console.error(err);
   });
