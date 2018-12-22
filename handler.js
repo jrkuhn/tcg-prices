@@ -141,7 +141,7 @@ function deliverPrices(name) {
         }
       }
       //console.log(validPrices);
-      resolve(JSON.parse(validPrices));
+      resolve(validPrices);
     }).catch(function(err) {
       console.error(err);
     });

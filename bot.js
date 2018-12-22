@@ -49,8 +49,8 @@ function respond() {
 }
 
 async function handleCard(name) {
-  var prices = await handler.deliverPrices(name);
-  console.log(prices);
+  var response = await handler.deliverPrices(name);
+  var prices = JSON.parse(response);
 
   var message = ">" + name;
   var numPrices = prices.results.length;
