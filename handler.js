@@ -25,8 +25,6 @@ function getDetails(productId) {
   var options = {
     "method": "GET",
     "url": url,
-    // "hostname": "api.tcgplayer.com",
-    // "path": path,
     "headers": {
       "Authorization": process.env.BEARER_TOKEN,
       "Accept": "application/json",
@@ -47,20 +45,6 @@ function getDetails(productId) {
       }
     });
   });
-
-  // var req = http.request(options, function (res) {
-    // var chunks = [];
-  
-    // res.on("data", function (chunk) {
-    //   chunks.push(chunk);
-    // });
-  
-    // res.on("end", function () {
-    //   var body = Buffer.concat(chunks);
-    //   console.log("DETAILS: " + body.toString());
-    // });
-  // });
-  //req.end();
 }
 
 //advanced search
@@ -90,7 +74,7 @@ function searchName(name) {
         throw new Error(error);
       } 
       else {
-        console.log(body);
+        //console.log(body);
         resolve(body);
       }
     });
@@ -120,7 +104,7 @@ function getPrices(productId) {
         throw new Error(error);
       } 
       else {
-        console.log("PRICES: " + body.toString());
+        //console.log("PRICES: " + body.toString());
         resolve(body);
       }
     });
@@ -135,13 +119,18 @@ function getPrices(productId) {
 
 function deliverPrices(name) {
   searchName(name)
-  .then(function(productID) {
+  .then(function(productID) { //shortend to .then(getPrices())
     console.log("DELIVERY-Id:");
     console.log(productID.results);
     return getPrices(productID.results);
   })
   .then(function(prices) {
-    console.log(prices);
+    var numPrices = prices.results.length;
+    if(numPrices > 0) {
+      for(i = 0; i < numPrices; i++) {
+        console.log(prices.results[i]);
+      }
+    }
   }).catch(function(err) {
     console.error(err);
   });
