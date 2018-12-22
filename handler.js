@@ -119,7 +119,7 @@ function getPrices(productId) {
 
 function deliverPrices(name) {
   
-  return new Promise(reoslve => {
+  return new Promise(resolve => {
     searchName(name)
     .then(function(productID) { //shortend to .then(getPrices())
       //console.log("DELIVERY-Id:");
@@ -139,7 +139,7 @@ function deliverPrices(name) {
           }
         }
       }
-      console.log(validPrices);
+      //console.log(validPrices);
       resolve(validPrices);
     }).catch(function(err) {
       console.error(err);
