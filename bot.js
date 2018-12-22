@@ -51,11 +51,21 @@ function respond() {
 async function handleCard(name) {
   var prices = await handler.deliverPrices(name);
   console.log(prices);
-  // const searchProm = handler.searchName(name);
-  // const detailsProm = handler.getDetails(102453);
-  // const priceProm = handler.getPrices(102453);
-  //console.log(searchProm);
-  postMessage(">" + name + "? \nIdk man, like, a lot I guess");
+
+  var message = ">" + name;
+  var numPrices = prices.results.length;
+  var seenPrices = [];
+  if(numPrices > 0) {
+    for(i = 0; i < numPrices; i++) {
+      if(!seenProducts.includes(prices.results[i].productId)){
+        seenProducts.add(prices.results[i].productId);
+        message += "\nlow:$" + prices.results[i].lowPrice + "  market:$" + prices.results[i].lowPrice;  
+      }
+    }
+  }
+  //need to getDetails of each id(in prices) for full name, card no., rarity
+  postMessage(message);
+  //postMessage(">" + name + "? \nIdk man, like, a lot I guess");
 }
 
 function handleLink(name) {
