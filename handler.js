@@ -124,7 +124,8 @@ function deliverPrices(name) {
     console.log(productID.results);
     return getPrices(productID.results);
   })
-  .then(function(prices) {
+  .then(function(resp) {
+    var prices = JSON.parse(resp);
     var numPrices = prices.results.length;
     if(numPrices > 0) {
       for(i = 0; i < numPrices; i++) {
