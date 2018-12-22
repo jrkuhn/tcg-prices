@@ -137,11 +137,11 @@ function deliverPrices(name) {
   searchName(name)
   .then(function(productID) {
     console.log("DELIVERY-Id:");
-    console.log(productID);
-    var prices = getPrices(productID);
-    console.log("DELIVERY-Prices");
+    console.log(productID.results);
+    return getPrices(productID.results);
+  })
+  .then(function(prices) {
     console.log(prices);
-    return prices;
   }).catch(function(err) {
     console.error(err);
   });
