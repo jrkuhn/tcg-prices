@@ -116,7 +116,7 @@ function getPrices(productId) {
   
 }
 
-
+//returns JSON of all valid prices for the name search
 function deliverPrices(name) {
   
   return new Promise(resolve => {
@@ -128,19 +128,20 @@ function deliverPrices(name) {
     })
     .then(function(resp) {
       var validPrices = {};
-      validPrices["prices"] = [];
+      validPrices["results"] = [];
       var prices = JSON.parse(resp);
 
+      //filter nulls
       var numPrices = prices.results.length;
       if(numPrices > 0) {
         for(i = 0; i < numPrices; i++) {
           if(prices.results[i].lowPrice != null){
-            validPrices["prices"].push(prices.results[i]);
+            validPrices["results"].push(prices.results[i]);
           }
         }
       }
       //console.log(validPrices);
-      resolve(validPrices);
+      resolve(JSON.parse(validPrices));
     }).catch(function(err) {
       console.error(err);
     });
