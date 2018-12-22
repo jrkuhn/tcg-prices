@@ -134,10 +134,12 @@ function getPrices(productId) {
 
 
 function deliverPrices(name) {
-  searchName(name).then(JSON.parse)
+  searchName(name)
   .then(function(productID) {
+    var results = JSON.parse(productID);
     console.log("DELIVERY-Id:");
-    console.log(productId);
+    console.log(productID);
+    console.log(results);
     var prices = getPrices(productID);
     console.log("DELIVERY-Prices");
     console.log(prices);
