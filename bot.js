@@ -54,7 +54,7 @@ async function handleCard(name) {
 
   var message = ">" + name;
   var numPrices = prices.results.length;
-  var seenPrices = [];
+  var seenProducts = [];
   if(numPrices > 0) {
     for(i = 0; i < numPrices; i++) {
       if(!seenProducts.includes(prices.results[i].productId)){
