@@ -49,9 +49,10 @@ function respond() {
 }
 
 async function handleCard(name) {
-  const searchProm = handler.searchName(name);
-  const detailsProm = handler.getDetails(102453);
-  const priceProm = handler.getPrices(102453);
+  handler.deliverPrices(name);
+  // const searchProm = handler.searchName(name);
+  // const detailsProm = handler.getDetails(102453);
+  // const priceProm = handler.getPrices(102453);
   //console.log(searchProm);
   postMessage(">" + name + "? \nIdk man, like, a lot I guess");
 }
