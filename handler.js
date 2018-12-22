@@ -118,6 +118,8 @@ function getPrices(productId) {
 
 
 function deliverPrices(name) {
+  var validPrices = {};
+  validPrices["prices"] = [];
   searchName(name)
   .then(function(productID) { //shortend to .then(getPrices())
     //console.log("DELIVERY-Id:");
@@ -125,8 +127,6 @@ function deliverPrices(name) {
     return getPrices(productID.results);
   })
   .then(function(resp) {
-    var validPrices = {};
-    validPrices["prices"] = [];
     var prices = JSON.parse(resp);
 
     var numPrices = prices.results.length;
@@ -137,10 +137,11 @@ function deliverPrices(name) {
         }
       }
     }
-    return validPrices;
+    
   }).catch(function(err) {
     console.error(err);
   });
+  return validPrices;
 }
 
 
