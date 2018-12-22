@@ -119,19 +119,27 @@ function getPrices(productId) {
 
 function deliverPrices(name) {
   searchName(name)
-  .then(function(productID) { //shortend to .then(getPrices())
+  .then(function(productID) {
     console.log("DELIVERY-Id:");
     console.log(productID.results);
-    return getPrices(productID.results);
+    var validPrices = {};
+    validPrices["prices"];
+    var prices = getPrices(productID.results);
+
+    var numPrices = prices.results.length;
+    if(numPrices > 0 && prices.success == true) {
+      for(i = 0; i < numPrices; i++) {
+        if(prices.results[i].lowPrice != null){
+          validPrices["prices"].push(prices.results[i]);
+        }
+      }
+    }
+    console.log(validPrices);
+    return validPrices;
   })
   .then(function(resp) {
     var prices = JSON.parse(resp);
-    var numPrices = prices.results.length;
-    if(numPrices > 0) {
-      for(i = 0; i < numPrices; i++) {
-        console.log(prices.results[i]);
-      }
-    }
+
   }).catch(function(err) {
     console.error(err);
   });
