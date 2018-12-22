@@ -137,10 +137,10 @@ function deliverPrices(name) {
         }
       }
     }
-    
   }).catch(function(err) {
     console.error(err);
   });
+  console.log(validPrices);
   return validPrices;
 }
 
