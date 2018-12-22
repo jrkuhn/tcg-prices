@@ -120,8 +120,8 @@ function getPrices(productId) {
 function deliverPrices(name) {
   searchName(name)
   .then(function(productID) { //shortend to .then(getPrices())
-    console.log("DELIVERY-Id:");
-    console.log(productID.results);
+    //console.log("DELIVERY-Id:");
+    //console.log(productID.results);
     return getPrices(productID.results);
   })
   .then(function(resp) {
@@ -137,7 +137,6 @@ function deliverPrices(name) {
         }
       }
     }
-    console.log(validPrices);
     return validPrices;
   }).catch(function(err) {
     console.error(err);
