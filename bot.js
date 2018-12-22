@@ -56,7 +56,7 @@ async function handleCard(name) {
   var numPrices = prices.results.length;
   if(numPrices > 0) {
     for(i = 0; i < numPrices; i++) {
-      message += "\n[" + prices.results[i].subTypeName + "] low:$" + prices.results[i].lowPrice + "  market:$" + prices.results[i].lowPrice;
+      message += "\n[" + prices.results[i].subTypeName + "] low:$" + prices.results[i].lowPrice + "  market:$" + prices.results[i].marketPrice;
     }
   }
   //need to getDetails of each id(in prices) for full name, card no., rarity
