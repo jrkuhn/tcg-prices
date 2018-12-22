@@ -78,7 +78,7 @@ function searchName(name) {
       Authorization: bearer },
     body: 
     { sort: 'MinPrice DESC',
-      limit: 100,
+      limit: 10,
       offset: 0,
       filters: [ { name: 'ProductName', values: [ name ] } ]  },
     json: true 
@@ -133,6 +133,18 @@ function getPrices(productId) {
 }
 
 
+function deliverPrices(name) {
+  searchName(name)
+  .then(function(productID) {
+    console.log("DELIVERY-Id:" + productID.toString());
+    var prices = getPrices(productID);
+    console.log("DELIVERY-Prices" + prices.toString());
+    return prices;
+  });
+}
+
+
 exports.searchName = searchName;
 exports.getDetails = getDetails;
 exports.getPrices = getPrices;
+exports.deliverPrices = deliverPrices;
