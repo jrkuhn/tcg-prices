@@ -58,7 +58,7 @@ async function handleCard(name) {
   if(numPrices > 0) {
     for(i = 0; i < numPrices; i++) {
       if(!seenProducts.includes(prices.results[i].productId)){
-        seenProducts.add(prices.results[i].productId);
+        seenProducts.push(prices.results[i].productId);
         message += "\nlow:$" + prices.results[i].lowPrice + "  market:$" + prices.results[i].lowPrice;  
       }
     }
