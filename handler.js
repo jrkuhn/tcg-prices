@@ -118,30 +118,33 @@ function getPrices(productId) {
 
 
 function deliverPrices(name) {
-  var validPrices = {};
-  validPrices["prices"] = [];
-  searchName(name)
-  .then(function(productID) { //shortend to .then(getPrices())
-    //console.log("DELIVERY-Id:");
-    //console.log(productID.results);
-    return getPrices(productID.results);
-  })
-  .then(function(resp) {
-    var prices = JSON.parse(resp);
+  
+  return new Promise(reoslve => {
+    searchName(name)
+    .then(function(productID) { //shortend to .then(getPrices())
+      //console.log("DELIVERY-Id:");
+      //console.log(productID.results);
+      return getPrices(productID.results);
+    })
+    .then(function(resp) {
+      var validPrices = {};
+      validPrices["prices"] = [];
+      var prices = JSON.parse(resp);
 
-    var numPrices = prices.results.length;
-    if(numPrices > 0) {
-      for(i = 0; i < numPrices; i++) {
-        if(prices.results[i].lowPrice != null){
-          validPrices["prices"].push(prices.results[i]);
+      var numPrices = prices.results.length;
+      if(numPrices > 0) {
+        for(i = 0; i < numPrices; i++) {
+          if(prices.results[i].lowPrice != null){
+            validPrices["prices"].push(prices.results[i]);
+          }
         }
       }
-    }
-  }).catch(function(err) {
-    console.error(err);
+      console.log(validPrices);
+      resolve(validPrices);
+    }).catch(function(err) {
+      console.error(err);
+    });
   });
-  console.log(validPrices);
-  return validPrices;
 }
 
 
