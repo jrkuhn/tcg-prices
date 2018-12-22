@@ -136,9 +136,11 @@ function getPrices(productId) {
 function deliverPrices(name) {
   searchName(name)
   .then(function(productID) {
-    console.log("DELIVERY-Id:" + productID.toString());
+    console.log("DELIVERY-Id:");
+    console.log(productId);
     var prices = getPrices(productID);
-    console.log("DELIVERY-Prices" + prices.toString());
+    console.log("DELIVERY-Prices");
+    console.log(prices);
     return prices;
   });
 }
