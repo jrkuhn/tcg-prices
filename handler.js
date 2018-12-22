@@ -126,7 +126,7 @@ function deliverPrices(name) {
   })
   .then(function(resp) {
     var validPrices = {};
-    validPrices["prices"];
+    validPrices["prices"] = [];
     var prices = JSON.parse(resp);
 
     var numPrices = prices.results.length;
