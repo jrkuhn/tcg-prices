@@ -40,7 +40,7 @@ function getDetails(productIds) {
         throw new Error(error);
       } 
       else {
-        console.log("DETAILS: " + body.toString());
+        //console.log("DETAILS: " + body.toString());
         resolve(body);
       }
     });
@@ -145,8 +145,10 @@ function deliverPrices(name) {
       }
       results.prices = validPrices.results;
       //console.log(validPrices);
+
+      return getDetails(results.productIds);
     })
-    .then(function() { //combined result containing productIds string and prices array
+    .then(function(details) { //combined result containing productIds string and prices array
       //console.log(results);
       resolve(results);
     }).catch(function(err) {
