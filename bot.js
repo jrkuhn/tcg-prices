@@ -49,16 +49,16 @@ function respond() {
 }
 
 async function handleCard(name) {
-  var prices = await handler.deliverPrices(name);
+  var results = await handler.deliverPrices(name);
   console.log(prices);
 
   var message = ">" + name;
-  var numPrices = prices.results.length;
+  var numPrices = results.prices.length;
   if(numPrices > 0) {
     for(i = 0; i < numPrices; i++) {
-      if(prices.results[i].subTypeName){ message += "\n[" + prices.results[i].subTypeName + "]"; }
-      if(prices.results[i].lowPrice) { message += " low:$" + prices.results[i].lowPrice; }
-      if(prices.results[i].marketPrice) { message += " market:$" + prices.results[i].marketPrice; }
+      if(results.prices[i].subTypeName){ message += "\n[" + results.prices[i].subTypeName + "]"; }
+      if(results.prices[i].lowPrice) { message += " low:$" + results.prices[i].lowPrice; }
+      if(results.prices[i].marketPrice) { message += " market:$" + results.prices[i].marketPrice; }
     }
   }
   //need to getDetails of each id(in prices) for full name, card no., rarity

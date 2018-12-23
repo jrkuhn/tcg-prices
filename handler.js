@@ -147,7 +147,7 @@ function deliverPrices(name) {
       //console.log(validPrices);
     })
     .then(function() { //combined result containing productIds string and prices array
-      console.log(results);
+      //console.log(results);
       resolve(results);
     }).catch(function(err) {
       console.error(err);
