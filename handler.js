@@ -156,14 +156,13 @@ function deliverPrices(name) {
       
       //index card details them first, each productID being the key
       for(i = 0; i < cardDetails.results.length; i++) {
-        console.log(cardDetails.results[i]);
         cardIndex[cardDetails.results[i].productId] = cardDetails.results[i];
       }
       console.log(cardIndex);
       
       //results.details = details.results;
 
-      console.log(resp);
+      //console.log(resp);
       resolve(results);
     }).catch(function(err) {
       console.error(err);
