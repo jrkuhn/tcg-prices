@@ -167,7 +167,7 @@ function deliverPrices(name) {
       
       //results.details = details.results;
 
-      //console.log(resp);
+      console.log(resp);
       resolve(results);
     }).catch(function(err) {
       console.error(err);
