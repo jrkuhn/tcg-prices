@@ -146,10 +146,10 @@ function deliverPrices(name) {
       results.prices = validPrices.results;
       //console.log(validPrices);
     })
-    .then(function() {
-      var response = results.productID.concat(results.prices);
-      console.log(response);
-      resolve(response);
+    .then(function() { //combined result containing productID string and prices array
+      var deliveryResult = { ...results.productID, ...results.prices };
+      console.log(deliveryResult);
+      resolve(deliveryResult);
     }).catch(function(err) {
       console.error(err);
     });
