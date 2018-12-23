@@ -162,7 +162,7 @@ function deliverPrices(name) {
 
       results.prices.forEach(function(prices, i) {
         var id = results.prices[i].productId;
-        results.prices[i].push(cardIndex.name);
+        results.prices[i].name = cardIndex.name;
       });
       
       //results.details = details.results;
