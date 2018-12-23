@@ -16,11 +16,11 @@ function updateToken() {
 }
 
 //get product details derived from productID's
-function getDetails(productId) {
+function getDetails(productIds) {
   var options, response;
 
   var http = require("http");
-  let url = "http://api.tcgplayer.com/catalog/products/" + productId;
+  let url = "http://api.tcgplayer.com/catalog/products/" + productIds;
 
   var options = {
     "method": "GET",
@@ -82,11 +82,11 @@ function searchName(name) {
 
 }
 
-function getPrices(productId) {
+function getPrices(productIds) {
   var options, response;
 
   var http = require("http");
-  let url = "http://api.tcgplayer.com/v1.17.0/pricing/product/" + productId;
+  let url = "http://api.tcgplayer.com/v1.17.0/pricing/product/" + productIds;
 
   var options = {
     "method": "GET",
@@ -123,11 +123,11 @@ function deliverPrices(name) {
     var results = {};
 
     searchName(name)
-    .then(function(productID) { //shortend to .then(getPrices())
+    .then(function(productIds) {
       //console.log("DELIVERY-Id:");
-      //console.log(productID.results);
-      results.productID = productID.results;
-      return getPrices(productID.results);
+      //console.log(productIds.results);
+      results.productIds = productIds.results;
+      return getPrices(productIds.results);
     })
     .then(function(resp) {
       var validPrices = {};
@@ -146,7 +146,7 @@ function deliverPrices(name) {
       results.prices = validPrices.results;
       //console.log(validPrices);
     })
-    .then(function() { //combined result containing productID string and prices array
+    .then(function() { //combined result containing productIds string and prices array
       console.log(results);
       resolve(results);
     }).catch(function(err) {
