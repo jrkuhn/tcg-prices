@@ -158,7 +158,7 @@ function deliverPrices(name) {
       for(var card in cardDetails) {
         cardIndex[card.productId] = card;
       }
-      console.log(detIndex);
+      console.log(cardIndex);
       
       //results.details = details.results;
 
