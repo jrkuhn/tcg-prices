@@ -20,7 +20,7 @@ function getDetails(productIds) {
   var options, response;
 
   var http = require("http");
-  let url = "http://api.tcgplayer.com/catalog/products/" + productIds;
+  let url = "http://api.tcgplayer.com/catalog/products/" + productIds + "?getExtendedFields=true";
 
   var options = {
     "method": "GET",
@@ -158,8 +158,12 @@ function deliverPrices(name) {
       cardDetails.results.forEach(function(card) {
         cardIndex[card.productId] = card;
       });
-        //cardIndex[cardDetails.results[i].productId] = cardDetails.results[i];
-      console.log(cardIndex);
+      //console.log(cardIndex);
+
+      results.prices.forEach(function(prices, i) {
+        var id = results.prices[i].productId;
+        results.prices[i].push(cardIndex.name);
+      });
       
       //results.details = details.results;
 
