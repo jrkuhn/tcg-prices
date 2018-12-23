@@ -121,12 +121,14 @@ function deliverPrices(name) {
   
   return new Promise(resolve => {
     var results = {};
+    var prodIds = {};
+    var numPrices = 0;
 
     searchName(name)
     .then(function(productIds) {
       //console.log("DELIVERY-Id:");
       //console.log(productIds.results);
-      results.productIds = productIds.results;
+      prodIds = productIds.results;
       return getPrices(productIds.results);
     })
     .then(function(resp) {
@@ -135,7 +137,7 @@ function deliverPrices(name) {
       var prices = JSON.parse(resp);
 
       //filter nulls
-      var numPrices = prices.results.length;
+      numPrices = prices.results.length;
       if(numPrices > 0) {
         for(i = 0; i < numPrices; i++) {
           if(prices.results[i].lowPrice != null){
@@ -146,13 +148,16 @@ function deliverPrices(name) {
       results.prices = validPrices.results;
       //console.log(validPrices);
 
-      return getDetails(results.productIds);
+      return getDetails(prodIds);
     })
     .then(function(resp) { //combined result containing productIds string and prices array
       var details = JSON.parse(resp);
+      
+      
+      
       results.details = details.results;
 
-      console.log(results);
+      //console.log(results);
       resolve(results);
     }).catch(function(err) {
       console.error(err);
