@@ -156,6 +156,7 @@ function deliverPrices(name) {
       
       //index card details them first, each productID being the key
       for(var card in cardDetails.results) {
+        console.log(card);
         cardIndex[card.productId] = card;
       }
       console.log(cardIndex);
