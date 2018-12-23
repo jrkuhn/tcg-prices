@@ -149,6 +149,8 @@ function deliverPrices(name) {
       return getDetails(results.productIds);
     })
     .then(function(details) { //combined result containing productIds string and prices array
+      results.details = details.results;
+
       //console.log(results);
       resolve(results);
     }).catch(function(err) {
