@@ -150,12 +150,17 @@ function deliverPrices(name) {
 
       return getDetails(prodIds);
     })
-    .then(function(resp) { //combined result containing productIds string and prices array
-      var details = JSON.parse(resp);
+    .then(function(resp) { //combined pricing results and product details results
+      var cardIndex = {};
+      var cardDetails = JSON.parse(resp);
       
+      //index card details them first, each productID being the key
+      for(var card in cardDetails) {
+        detIndex[card.productId] = card;
+      }
+      console.log(detIndex);
       
-      
-      results.details = details.results;
+      //results.details = details.results;
 
       //console.log(results);
       resolve(results);
