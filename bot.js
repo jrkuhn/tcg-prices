@@ -54,7 +54,7 @@ async function handleCard(name) {
 
   var message = "", currName = "", currSeries = "";
   results.prices.forEach(function(card, i) {
-      if(card.name && !card.name == currName) {
+      if(card.name && card.name != currName) {
         if(i == 0) { message += card.name; }
         else { message += "\n" + card.name };
 
@@ -64,7 +64,7 @@ async function handleCard(name) {
         currName = card.name; //update name 
         currSeries = card.series; //update series
       }
-      else if(card.series && !card.series == currSeries) {
+      else if(card.series && card.series != currSeries) {
         message += "\n" + card.name;
         if(card.rarity) { message += " ("+card.rarity+")"; }
         message += " ["+card.series+"]";
