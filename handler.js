@@ -150,9 +150,9 @@ function deliverPrices(name) {
     })
     .then(function(details) { //combined result containing productIds string and prices array
       console.log(details);
-      results.details = details.results;
+      results.details = details;
 
-      //console.log(results);
+      console.log(results);
       resolve(results);
     }).catch(function(err) {
       console.error(err);
