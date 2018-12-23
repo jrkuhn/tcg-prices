@@ -148,7 +148,8 @@ function deliverPrices(name) {
 
       return getDetails(results.productIds);
     })
-    .then(function(details) { //combined result containing productIds string and prices array
+    .then(function(resp) { //combined result containing productIds string and prices array
+      var details = JSON.parse(resp);
       results.details = details.results;
 
       console.log(results);
