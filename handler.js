@@ -120,10 +120,13 @@ function getPrices(productId) {
 function deliverPrices(name) {
   
   return new Promise(resolve => {
+    var results = {};
+
     searchName(name)
     .then(function(productID) { //shortend to .then(getPrices())
       //console.log("DELIVERY-Id:");
       //console.log(productID.results);
+      results.productID = productID.results;
       return getPrices(productID.results);
     })
     .then(function(resp) {
@@ -140,8 +143,13 @@ function deliverPrices(name) {
           }
         }
       }
+      results.prices = validPrices.results;
       //console.log(validPrices);
-      resolve(validPrices);
+    })
+    .then(function() {
+      var response = results.productID.concat(results.prices);
+      console.log(response);
+      resolve(response);
     }).catch(function(err) {
       console.error(err);
     });
