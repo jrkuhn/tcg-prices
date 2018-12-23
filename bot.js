@@ -52,16 +52,31 @@ async function handleCard(name) {
   var results = await handler.deliverPrices(name);
   console.log(results);
 
-  var message = ">" + name;
-  var numPrices = results.prices.length;
-  if(numPrices > 0) {
-    for(i = 0; i < numPrices; i++) {
-      if(results.prices[i].subTypeName){ message += "\n[" + results.prices[i].subTypeName + "]"; }
-      if(results.prices[i].lowPrice) { message += " low:$" + results.prices[i].lowPrice; }
-      if(results.prices[i].marketPrice) { message += " market:$" + results.prices[i].marketPrice; }
-    }
-  }
-  //need to getDetails of each id(in prices) for full name, card no., rarity
+  var message = "", currName = "", currSeries = "";
+  results.prices.forEach(function(card, i) {
+      if(card.name && !card.name.equals(currName)) {
+        if(i == 0) { message += card.name; }
+        else { message += "\n" + card.name };
+
+        if(card.rarity) { message += " ("+card.rarity+")"; }
+        if(card.series) { message += " ["+card.series+"]"; }
+        
+        currName = card.name; //update name 
+        currSeries = card.series; //update series
+      }
+      else if(card.series && !card.series.equals(currSeries)) {
+        message += "\n" + card.name;
+        if(card.rarity) { message += " ("+card.rarity+")"; }
+        message += " ["+card.series+"]";
+
+        currSeries = card.series; //update series
+      }
+      if(card.subTypeName){ message += "\n["+card.subTypeName+"]"; }
+      if(card.lowPrice) { message += " low:$" + card.lowPrice; }
+      if(card.marketPrice) { message += " market:$" + card.marketPrice; }
+  });
+  
+  
   postMessage(message);
   //postMessage(">" + name + "? \nIdk man, like, a lot I guess");
 }
