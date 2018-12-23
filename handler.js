@@ -151,6 +151,7 @@ function deliverPrices(name) {
       return getDetails(prodIds);
     })
     .then(function(resp) { //combined pricing results and product details results
+      //console.log(resp);
       var cardIndex = {};
       var cardDetails = JSON.parse(resp);
       
@@ -162,12 +163,11 @@ function deliverPrices(name) {
 
       results.prices.forEach(function(prices, i) {
         var id = results.prices[i].productId;
-        results.prices[i].name = cardIndex.name;
+        results.prices[i].name = cardIndex[id].name;
+        results.prices[i].series = cardIndex[id].extendedData[0].value;
+        results.prices[i].rarity = cardIndex[id].extendedData[1].value;
       });
-      
-      //results.details = details.results;
 
-      console.log(resp);
       resolve(results);
     }).catch(function(err) {
       console.error(err);
