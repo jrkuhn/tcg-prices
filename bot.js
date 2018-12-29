@@ -93,7 +93,7 @@ async function handleCard(name, sort) {
   
   var results = await handler.deliverPrices(name, sort)
   .catch(function(errmsg){
-    postMessage(errmsg);
+    postMessage("i'm borken :,(");
     return;
   });
   console.log(results);
