@@ -58,7 +58,7 @@ function respond() {
 }
 
 async function handleCard(name, sort) {
-  if(name == null || !validSorts.contains(sort)) { console.error("Invalid Name/Sort"); return; }
+  if(name == null || !validSorts.includes(sort)) { console.error("Invalid Name/Sort"); return; }
 
   var results = await handler.deliverPrices(name, sort);
   console.log(results);
