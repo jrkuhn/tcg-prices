@@ -132,10 +132,12 @@ function deliverPrices(name, sort) {
       return getPrices(productIds.results);
     })
     .then(function(resp) {
-      var validPrices = {};
+      var validPrices = {}, prices;
       validPrices["results"] = [];
-      
-      var prices = JSON.parse(resp);
+
+      if(resp.charAt(0) != '<'){
+        prices = JSON.parse(resp);
+      } else { throw new Error("unexpected HTTP response"); }
 
       //filter nulls
       numPrices = prices.results.length;
