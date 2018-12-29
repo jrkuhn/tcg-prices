@@ -105,8 +105,9 @@ async function handleCard(name, sort) {
 
   var message = "", currName = "", currSeries = "";
   results.prices.forEach(function(card, i) {
+      //build card description
       if(card.name && card.name != currName) {
-        if(i == 0) { message += card.name; }
+        if(i == 0) { message += card.name; } //first line
         else { message += "\n" + card.name };
 
         if(card.rarity) { message += " ("+card.rarity+")"; }
@@ -115,15 +116,19 @@ async function handleCard(name, sort) {
         currName = card.name; //update name 
         currSeries = card.series; //update series
       }
-      else if(card.series && card.series != currSeries) {
+      //consecutively same name, different series
+      else if(card.series && card.series != currSeries) { 
         message += "\n" + card.name;
         if(card.rarity) { message += " ("+card.rarity+")"; }
         message += " ["+card.series+"]";
 
         currSeries = card.series; //update series
       }
+
+      //build pricing description
       if(card.subTypeName) { 
-        //skip over if 1st exists
+
+        //skip over Unm if 1st exists
         if(card.subTypeName == "Unm") {
           //ahead
           if(i < results.prices.length-1 && results.prices[i+1].series == currSeries) {
@@ -139,7 +144,6 @@ async function handleCard(name, sort) {
         if(card.marketPrice) { message += "  market:$" + card.marketPrice.toFixed(2); }
       }
   });
-  
   
   postMessage(message);
   //postMessage(">" + name + "? \nIdk man, like, a lot I guess");
