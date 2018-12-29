@@ -90,8 +90,12 @@ function respond() {
 
 async function handleCard(name, sort) {
   if(name == null || !validSorts.includes(sort)) { console.error("Invalid Name/Sort"); return; }
-
-  var results = await handler.deliverPrices(name, sort);
+  
+  var results = await handler.deliverPrices(name, sort, errmsg)
+  .catch(function(errmsg){
+    postMessage(errmsg);
+    return;
+  });
   console.log(results);
 
   var message = "", currName = "", currSeries = "";
