@@ -129,12 +129,12 @@ async function handleCard(name, sort) {
           if(i < results.prices.length-1 && results.prices[i+1].series == currSeries) {
             if(results.prices[i+1].subTypeName == "1st") { return; }
           } //behind
-          if(i > 0 && i < results.prices.length && results.prices[i+1].series == currSeries) {
+          if(i > 0 && i < results.prices.length && results.prices[i-1].series == currSeries) {
             if(results.prices[i-1].subTypeName == "1st") { return; }
           }
         }
         message += "\n  ["+card.subTypeName+"]";
-        
+
         if(card.lowPrice) { message += " low:$" + card.lowPrice.toFixed(2); }
         if(card.marketPrice) { message += "  market:$" + card.marketPrice.toFixed(2); }
       }
