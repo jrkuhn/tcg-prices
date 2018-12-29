@@ -23,7 +23,13 @@ function respond() {
       helpRegex = /[./#?$]{1}[hH]elp$/;
       
   if(request.text) {
+
     switch(true) {
+      case request.text.includes("== TcgPrices Help =="):
+        console.log("ignoring help prompt");
+        this.res.writeHead(200);
+        this.res.end();
+        break;
       case coolRegex.test(request.text):
         this.res.writeHead(200);
         coolMsg = cool();
