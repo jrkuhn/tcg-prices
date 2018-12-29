@@ -50,10 +50,10 @@ function getDetails(productIds) {
 //advanced search
 function searchName(name) {
   var options, response;
-
+  var srchUrl = "http://api.tcgplayer.com/"+tcgver+"/catalog/categories/2/search";
   options = { 
     method: 'POST',
-    url: 'http://api.tcgplayer.com/v1.17.0/catalog/categories/2/search',
+    url: srchUrl,
     headers: 
     { 'Postman-Token': 'ab2f1322-dd36-4b9f-a7cd-b298294ad799',
       'cache-control': 'no-cache',
@@ -86,7 +86,7 @@ function getPrices(productIds) {
   var options, response;
 
   var http = require("http");
-  let url = "http://api.tcgplayer.com/v1.17.0/pricing/product/" + productIds;
+  let url = "http://api.tcgplayer.com/"+tcgver+"/pricing/product/"+productIds;
 
   var options = {
     "method": "GET",
