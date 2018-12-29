@@ -68,10 +68,11 @@ function respond() {
       case helpRegex.test(request.text):
         this.res.writeHead(200);
         var helpMessage = "== TcgPrices Help =="
-        +"\n/price <card> - sort relevence"
-        +"\n/maxprice <card> - sort $high"
-        +"\n/minprice <card> - sort $Low"
-        +"\n/link <card> - link to TCGplayer";
+        +"\n/price <card>  -  sort Relevence"
+        +"\n/maxprice <card>  -  sort $High"
+        +"\n/minprice <card>  -  sort $Low"
+        +"\n/hotprice <card>  -  sort Popular"
+        +"\n/link <card>  -  link to TCGplayer";
         postMessage(helpMessage);
         this.res.end();
       default:

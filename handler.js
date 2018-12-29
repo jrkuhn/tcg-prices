@@ -188,7 +188,7 @@ function abbrvRarity(rarity) {
   }
   switch(rarity) {
     case "Common":
-      return "CM";
+      return "C";
       break;
     case "Rare":
       return "R";
