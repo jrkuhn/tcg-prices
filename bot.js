@@ -9,10 +9,13 @@ var pubKey = process.env.PUBLIC_KEY;
 var prvKey = process.env.PRIVATE_KEY;
 var bearer = process.env.BEARER_TOKEN; 
 
+var validSorts = ["ProductName ASC","MinPrice DESC","MinPrice ASC","Relevance","Sales DESC"];
+
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
       coolRegex = /\/cool guy$/;
-      cardRegex = /[./#?$]{1}[tT]cgpric[es][es]? (.*)/;
+      cardRegex = /[./#?$]{1}[tT]cg[pP]ric[es][es]? (.*)/;
+      maxRegex = /[./#?$]{1}[mM]ax[pP]ric[es][es]? (.*)/;
       linkRegex = /[./#?$]{1}[tT]cglink (.*)/;
       
   if(request.text) {
@@ -26,9 +29,15 @@ function respond() {
       case cardRegex.test(request.text):
         this.res.writeHead(200);
         cardName = request.text.match(cardRegex);
-        handleCard(cardName[1]);
+        handleCard(cardName[1], "Relevance");
         this.res.end();
         break;
+      case maxRegex.test(request.text):
+        this.res.writeHead(200);
+        cardName = request.text.match(maxRegex);
+        handleCard(cardName[1], "MinPrice DESC");
+        this.res.end();
+        break;  
       case linkRegex.test(request.text):
         this.res.writeHead(200);
         cardName = request.text.match(linkRegex);
@@ -48,8 +57,10 @@ function respond() {
   }
 }
 
-async function handleCard(name) {
-  var results = await handler.deliverPrices(name);
+async function handleCard(name, sort) {
+  if(name == null || !validSorts.contains(sort)) { console.error("Invalid Name/Sort"); return; }
+
+  var results = await handler.deliverPrices(name, sort);
   console.log(results);
 
   var message = "", currName = "", currSeries = "";

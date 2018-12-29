@@ -48,7 +48,7 @@ function getDetails(productIds) {
 }
 
 //advanced search
-function searchName(name) {
+function searchName(name, sort) {
   var options, response;
   var srchUrl = "http://api.tcgplayer.com/"+tcgver+"/catalog/categories/2/search";
   options = { 
@@ -61,7 +61,7 @@ function searchName(name) {
       Accept: 'application/json',
       Authorization: bearer },
     body: //'MinPrice DESC'
-    { sort: 'Relevance',
+    { sort: sort,
       limit: 10,
       offset: 0,
       filters: [ { name: 'ProductName', values: [ name ] } ]  },
@@ -117,14 +117,14 @@ function getPrices(productIds) {
 }
 
 //returns JSON of all valid prices for the name search
-function deliverPrices(name) {
+function deliverPrices(name, sort) {
   
   return new Promise(resolve => {
     var results = {};
     var prodIds = {};
     var numPrices = 0;
 
-    searchName(name)
+    searchName(name, sort)
     .then(function(productIds) {
       //console.log("DELIVERY-Id:");
       //console.log(productIds.results);
@@ -220,7 +220,7 @@ function abbrvEd(edition) {
   }
   switch(edition) {
     case "Unlimited":
-      return "Un";
+      return "Unm";
       break;
     case "1st Edition":
       return "1st";
@@ -235,7 +235,7 @@ function abbrvEd(edition) {
       return "1st";
       break;
     case "Unlimited - Ultimate":
-      return "Un";
+      return "Unm";
       break;
     default:
       return edition;
