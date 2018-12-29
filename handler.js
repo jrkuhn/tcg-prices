@@ -62,7 +62,7 @@ function searchName(name, sort) {
       Authorization: bearer },
     body: //'MinPrice DESC'
     { sort: sort,
-      limit: 10,
+      limit: 5,
       offset: 0,
       filters: [ { name: 'ProductName', values: [ name ] } ]  },
     json: true 
