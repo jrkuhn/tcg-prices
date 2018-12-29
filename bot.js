@@ -13,13 +13,13 @@ var validSorts = ["ProductName ASC","MinPrice DESC","MinPrice ASC","Relevance","
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
-      coolRegex = /\/cool guy$/;
-      cardRegex = /[./#?$]{1}[tT]cg[pP]ric[es][es]? (.*)/;
-      pricesRegex = /[./#?$]{1}[pP]ric[es][es]? (.*)/;
-      maxRegex = /[./#?$]{1}[mM]ax[pP]ric[es][es]? (.*)/;
-      minRegex = /[./#?$]{1}[mM]in[pP]ric[es][es]? (.*)/;
-      hotRegex = /[./#?$]{1}[hH]ot[pP]ric[es][es]? (.*)/;
-      linkRegex = /[./#?$]{1}[lL]ink (.*)/;
+      coolRegex = /\/cool guy$/,
+      cardRegex = /[./#?$]{1}[tT]cg[pP]ric[es][es]? (.*)/,
+      pricesRegex = /[./#?$]{1}[pP]ric[es][es]? (.*)/,
+      maxRegex = /[./#?$]{1}[mM]ax[pP]ric[es][es]? (.*)/,
+      minRegex = /[./#?$]{1}[mM]in[pP]ric[es][es]? (.*)/,
+      hotRegex = /[./#?$]{1}[hH]ot[pP]ric[es][es]? (.*)/,
+      linkRegex = /[./#?$]{1}[lL]ink (.*)/,
       helpRegex = /[./#?$]{1}[hH]elp/;
       
   if(request.text) {
