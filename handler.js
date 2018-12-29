@@ -134,7 +134,7 @@ function deliverPrices(name, sort) {
     .then(function(resp) {
       var validPrices = {};
       validPrices["results"] = [];
-      var prices = JSON.parse(resp);
+      var prices = JSON.parse(resp).catch(function(err) { console.error(err); });
 
       //filter nulls
       numPrices = prices.results.length;
