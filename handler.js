@@ -12,6 +12,7 @@ var tcgver = process.env.TCG_VERSION;
 
 function updateToken() {
   var options, body, botreq;
+  //TODO
   //process.env.BEARER_TOKEN = access_token
 }
 
@@ -118,7 +119,6 @@ function getPrices(productIds) {
 
 //returns JSON of all valid prices for the name search
 function deliverPrices(name, sort) {
-  console.log("name: " + name + "  sort: " + sort);
   return new Promise(resolve => {
     var results = {};
     var prodIds = {};
@@ -126,8 +126,6 @@ function deliverPrices(name, sort) {
 
     searchName(name, sort)
     .then(function(productIds) {
-      //console.log("DELIVERY-Id:");
-      //console.log(productIds.results);
       prodIds = productIds.results;
       return getPrices(productIds.results);
     })
@@ -149,12 +147,10 @@ function deliverPrices(name, sort) {
         }
       }
       results.prices = validPrices.results;
-      //console.log(validPrices);
 
       return getDetails(prodIds);
     })
     .then(function(resp) { //combined pricing results and product details results
-      //console.log(resp);
       var cardIndex = {};
       var cardDetails = JSON.parse(resp);
       
@@ -162,7 +158,6 @@ function deliverPrices(name, sort) {
       cardDetails.results.forEach(function(card) {
         cardIndex[card.productId] = card;
       });
-      //console.log(cardIndex);
 
       results.prices.forEach(function(price, i) {
         var id = results.prices[i].productId;
@@ -170,12 +165,9 @@ function deliverPrices(name, sort) {
         results.prices[i].subTypeName = abbrvEd(price.subTypeName);
         //extended values
         cardIndex[id].extendedData.forEach(function(eData, j) {
-          console.log(eData);
           if(eData.name == "Number") { results.prices[i].series = eData.value; }
           if(eData.name == "Rarity") { results.prices[i].rarity = abbrvRarity(eData.value); }
         })
-        // results.prices[j].series = cardIndex[id].extendedData[0].value;
-        // results.prices[j].rarity = cardIndex[id].extendedData[1].value;
       });
 
       resolve(results);
