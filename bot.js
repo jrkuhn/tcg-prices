@@ -71,7 +71,7 @@ async function handleCard(name) {
 
         currSeries = card.series; //update series
       }
-      if(card.subTypeName){ message += "\n["+card.subTypeName+"]"; }
+      if(card.subTypeName){ message += "\n  ["+card.subTypeName+"]"; }
       if(card.lowPrice) { message += " low:$" + card.lowPrice; }
       if(card.marketPrice) { message += " market:$" + card.marketPrice; }
   });

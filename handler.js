@@ -220,7 +220,7 @@ function abbrvEd(edition) {
   }
   switch(edition) {
     case "Unlimited":
-      return "Unl";
+      return "Un";
       break;
     case "1st Edition":
       return "1st";
@@ -235,7 +235,7 @@ function abbrvEd(edition) {
       return "1st";
       break;
     case "Unlimited - Ultimate":
-      return "Unl";
+      return "Un";
       break;
     default:
       return edition;
