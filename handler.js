@@ -168,8 +168,8 @@ function deliverPrices(name) {
         //extended values
         cardIndex[id].extendedData.forEach(function(eData, j) {
           console.log(eData);
-          if(eData.name == "Number") { results.prices[j].series = eData.value; }
-          if(eData.name == "Rarity") { results.prices[j].rarity = eData.value; }
+          if(eData.name == "Number") { results.prices[i].series = eData.value; }
+          if(eData.name == "Rarity") { results.prices[i].rarity = eData.value; }
         })
         // results.prices[j].series = cardIndex[id].extendedData[0].value;
         // results.prices[j].rarity = cardIndex[id].extendedData[1].value;
