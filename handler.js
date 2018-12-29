@@ -165,6 +165,7 @@ function deliverPrices(name, sort) {
         results.prices[i].subTypeName = abbrvEd(price.subTypeName);
         //extended values
         cardIndex[id].extendedData.forEach(function(eData, j) {
+         console.log(edata);
           if(eData.name == "Number") { results.prices[i].series = eData.value; }
           if(eData.name == "Rarity") { results.prices[i].rarity = abbrvRarity(eData.value); }
         })
@@ -203,8 +204,23 @@ function abbrvRarity(rarity) {
     case "Ghost Rare":
       return "GR";
       break;
+    case "Gold Rare":
+      return "G";
+      break;
+    case "Gold Secret Rare":
+      return "GSCR";
+      break;
+    case "Mosaic Rare":
+      return "Mosaic"
+      break;
+    case "Shatterfoil Rare":
+      return "Shatter";
+      break;
+    case "Starfoil Rare":
+      return "Star";
+      break;
     default:
-      return;
+      return rarity;
       break;
   }
 }

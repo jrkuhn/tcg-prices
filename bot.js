@@ -122,9 +122,15 @@ async function handleCard(name, sort) {
 
         currSeries = card.series; //update series
       }
-      if(card.subTypeName){ message += "\n  ["+card.subTypeName+"]"; }
-      if(card.lowPrice) { message += " low:$" + card.lowPrice; }
-      if(card.marketPrice) { message += " market:$" + card.marketPrice; }
+      if(card.subTypeName) { 
+        if(card.subTypeName == "Unm") {
+          //skip over if 1st exists
+          if(i < results.prices.length-1 && results.prices[i+1].subTypeName == "1st") { return; }
+        }
+        message += "\n  ["+card.subTypeName+"]";
+        if(card.lowPrice) { message += " low:$" + card.lowPrice; }
+        if(card.marketPrice) { message += " market:$" + card.marketPrice; }
+      }
   });
   
   
