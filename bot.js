@@ -103,7 +103,7 @@ async function handleCard(name, sort) {
   var results = await handler.deliverPrices(name, sort);
   console.log(results);
 
-  var message = "", currName = "", currSeries = "";
+  var message = "", currName = "", currSeries = "", currRarity = "";
   results.prices.forEach(function(card, i) {
       if(card.name && card.name != currName) {
         if(i == 0) { message += card.name; }
@@ -114,11 +114,17 @@ async function handleCard(name, sort) {
         
         currName = card.name; //update name 
         currSeries = card.series; //update series
+        currRarity = card.rarity; //update rarity
       }
-      else if(card.series && card.series != currSeries) {
-        message += "\n" + card.name;
-        if(card.rarity) { message += " ("+card.rarity+")"; }
-        message += " ["+card.series+"]";
+      else if(card.series) {
+        if(card.series != currSeries) {
+          message += "\n" + card.name;
+          if(card.rarity) { message += " ("+card.rarity+")"; }
+          message += " ["+card.series+"]";
+        }
+        else if(card.rarity && card.rarity != currRarity) { //same series, diff rarity
+          card.diffRarity = true;
+        }
 
         currSeries = card.series; //update series
       }
@@ -129,6 +135,12 @@ async function handleCard(name, sort) {
           if(i > 0 && i < results.prices.length && results.prices[i-1].subTypeName == "1st") { return; }
         }
         message += "\n  ["+card.subTypeName+"]";
+
+        //handle differing rarity in same series
+        if(card.diffRarity) { 
+          message += "("+curr.rarity+")";
+        }
+        
         if(card.lowPrice) { message += " low:$" + card.lowPrice.toFixed(2); }
         if(card.marketPrice) { message += "  market:$" + card.marketPrice.toFixed(2); }
       }
