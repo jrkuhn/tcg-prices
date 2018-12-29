@@ -118,7 +118,7 @@ function getPrices(productIds) {
 
 //returns JSON of all valid prices for the name search
 function deliverPrices(name, sort) {
-  
+  console.log("name: " + name + "  sort: " + sort);
   return new Promise(resolve => {
     var results = {};
     var prodIds = {};
