@@ -20,7 +20,7 @@ function respond() {
       minRegex = /[./#?$]{1}[mM]in[pP]ric[es][es]? (.*)/;
       hotRegex = /[./#?$]{1}[hH]ot[pP]ric[es][es]? (.*)/;
       linkRegex = /[./#?$]{1}[lL]ink (.*)/;
-      helpRegex = /[./#?$]{1}[hH]elp (.*)/;
+      helpRegex = /[./#?$]{1}[hH]elp/;
       
   if(request.text) {
     switch(true) {
@@ -68,9 +68,10 @@ function respond() {
       case helpRegex.test(request.text):
         this.res.writeHead(200);
         var helpMessage = "[TcgPrices Help]"
-        +"\n/price <card>: price by Relevence\n/"
-        +"\n/(max,min,hot)price <card>: sort $High, $Low, Hot"
-        +"\n/link <card>: link to TCGplayer search";
+        +"\n/price <card> - sort relevence"
+        +"\n/maxprice <card> - sort $high"
+        +"\n/minprice <card> - sort $Low"
+        +"\n/link <card> - link to TCGplayer";
         postMessage(helpMessage);
         this.res.end();
       default:
