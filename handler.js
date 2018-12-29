@@ -117,7 +117,7 @@ function getPrices(productIds) {
 }
 
 //returns JSON of all valid prices for the name search
-function deliverPrices(name, sort, errmsg) {
+function deliverPrices(name, sort) {
   
   return new Promise(resolve => {
     var results = {};
@@ -177,9 +177,9 @@ function deliverPrices(name, sort, errmsg) {
 
       resolve(results);
     }).catch(function(err) {
-      errmsg = "Justin needs to fix me";
       console.log("Justin needs to fix me");
       console.error(err);
+      resolve("i'm borken :,(");
     });
   });
 }
