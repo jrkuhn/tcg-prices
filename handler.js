@@ -60,8 +60,8 @@ function searchName(name) {
       'Content-Type': 'application/json',
       Accept: 'application/json',
       Authorization: bearer },
-    body: 
-    { sort: 'MinPrice DESC',
+    body: //'MinPrice DESC'
+    { sort: 'Relevance',
       limit: 10,
       offset: 0,
       filters: [ { name: 'ProductName', values: [ name ] } ]  },
