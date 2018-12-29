@@ -20,7 +20,7 @@ function respond() {
       minRegex = /[./#?$]{1}[mM]in[pP]ric[es][es]? (.*)/,
       hotRegex = /[./#?$]{1}[hH]ot[pP]ric[es][es]? (.*)/,
       linkRegex = /[./#?$]{1}[lL]ink (.*)/,
-      helpRegex = /[./#?$]{1}[hH]elp/;
+      helpRegex = /[./#?$]{1}[hH]elp$/;
       
   if(request.text) {
     switch(true) {
@@ -91,7 +91,7 @@ function respond() {
   }
 }
 
-function handleCard(name, sort) {
+async function handleCard(name, sort) {
   if(name == null || !validSorts.includes(sort)) { console.error("Invalid Name/Sort"); return; }
 
   var results = await handler.deliverPrices(name, sort);
