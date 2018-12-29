@@ -165,7 +165,6 @@ function deliverPrices(name, sort) {
         results.prices[i].subTypeName = abbrvEd(price.subTypeName);
         //extended values
         cardIndex[id].extendedData.forEach(function(eData, j) {
-         console.log(edata);
           if(eData.name == "Number") { results.prices[i].series = eData.value; }
           if(eData.name == "Rarity") { results.prices[i].rarity = abbrvRarity(eData.value); }
         })
