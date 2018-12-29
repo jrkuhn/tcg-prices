@@ -65,6 +65,7 @@ function respond() {
         cardName = request.text.match(linkRegex);
         handleLink(cardName[1]);
         this.res.end();
+        break;
       case helpRegex.test(request.text):
         this.res.writeHead(200);
         var helpMessage = "== TcgPrices Help =="
@@ -75,6 +76,7 @@ function respond() {
         +"\n/link <card>  -  link to TCGplayer";
         postMessage(helpMessage);
         this.res.end();
+        break;
       default:
         console.log("no matching command");
         this.res.writeHead(200);
