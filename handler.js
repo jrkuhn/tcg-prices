@@ -164,8 +164,14 @@ function deliverPrices(name) {
       results.prices.forEach(function(prices, i) {
         var id = results.prices[i].productId;
         results.prices[i].name = cardIndex[id].name;
-        results.prices[i].series = cardIndex[id].extendedData[0].value;
-        results.prices[i].rarity = cardIndex[id].extendedData[1].value;
+
+        //extended values
+        cardIndex[id].extendedData.forEach(function(eData, j) {
+          if(eData.name == "Number") { results.prices[j].series = eData.value; }
+          if(eData.name == "Rarity") { results.prices[j].rarity = eData.value; }
+        })
+        // results.prices[j].series = cardIndex[id].extendedData[0].value;
+        // results.prices[j].rarity = cardIndex[id].extendedData[1].value;
       });
 
       resolve(results);
