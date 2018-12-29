@@ -17,8 +17,10 @@ function respond() {
       cardRegex = /[./#?$]{1}[tT]cg[pP]ric[es][es]? (.*)/;
       pricesRegex = /[./#?$]{1}[pP]ric[es][es]? (.*)/;
       maxRegex = /[./#?$]{1}[mM]ax[pP]ric[es][es]? (.*)/;
+      minRegex = /[./#?$]{1}[mM]in[pP]ric[es][es]? (.*)/;
       hotRegex = /[./#?$]{1}[hH]ot[pP]ric[es][es]? (.*)/;
       linkRegex = /[./#?$]{1}[lL]ink (.*)/;
+      helpRegex = /[./#?$]{1}[hH]elp (.*)/;
       
   if(request.text) {
     switch(true) {
@@ -46,6 +48,12 @@ function respond() {
         handleCard(cardName[1], "MinPrice DESC");
         this.res.end();
         break;  
+      case minRegex.test(request.text):
+        this.res.writeHead(200);
+        cardName = request.text.match(minRegex);
+        handleCard(cardName[1], "MinPrice ASC");
+        this.res.end();
+        break;  
       case hotRegex.test(request.text):
         this.res.writeHead(200);
         cardName = request.text.match(hotRegex);
@@ -56,6 +64,14 @@ function respond() {
         this.res.writeHead(200);
         cardName = request.text.match(linkRegex);
         handleLink(cardName[1]);
+        this.res.end();
+      case helpRegex.test(request.text):
+        this.res.writeHead(200);
+        var helpMessage = "[TcgPrices Help]"
+        +"\n/price <card>: price by Relevence\n/"
+        +"\n/(max,min,hot)price <card>: sort $High, $Low, Hot"
+        +"\n/link <card>: link to TCGplayer search";
+        postMessage(helpMessage);
         this.res.end();
       default:
         console.log("no matching command");
