@@ -167,6 +167,7 @@ function deliverPrices(name) {
 
         //extended values
         cardIndex[id].extendedData.forEach(function(eData, j) {
+          console.log(eData);
           if(eData.name == "Number") { results.prices[j].series = eData.value; }
           if(eData.name == "Rarity") { results.prices[j].rarity = eData.value; }
         })
@@ -179,6 +180,38 @@ function deliverPrices(name) {
       console.error(err);
     });
   });
+}
+
+function abbrevRarity(rarity) {
+  if(rarity == null) {
+    return;
+  }
+  switch(rarity) {
+    case "Common":
+      return "CM";
+      break;
+    case "Rare":
+      return "R";
+      break;
+    case "Super": 
+      return "SR";
+      break;
+    case "Ultra":
+      return "UR";
+      break;
+    case "Secret":
+      return "SCR";
+      break;
+    case "Ultimate":
+      return "ULT";
+      break;
+    case "Ghost":
+      return "GR";
+      break;
+    default:
+      return;
+      break;
+  }
 }
 
 
