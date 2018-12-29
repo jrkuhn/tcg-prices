@@ -1,0 +1,10 @@
+HTTP/1.1 200 OK
+Cache-Control: no-cache
+Pragma: no-cache
+Content-Type: application/json;charset=UTF-8
+Expires: -1
+Server: Microsoft-IIS/8.5
+Date: Sat, 29 Dec 2018 05:59:55 GMT
+Content-Length: 523
+
+{"access_token":"vhtIa0kFGWXlgv8xsrKMrjcNaiQKFTH3JfQELwf9-DgbYkhUUzGgvvTANhhlBUpxfy89RjY8HPwp5THAlFjspMu0aHiRrKO_e75Zo6WJH7JqY1JIhGakeosJU6mhrn9BwTfIacXnEoRkGUhPBWBzlrGJ8T8wFut_32AeriazPOEEynh9F2j3r_ITumyDKeUJUIisIvxvF05U4DSCjleLvYw7jvLz-UAf5gplrqcl6xEnAeMFfacLVwr65JQayNC0df_UHR_com0NBm55rm87Ux_1bDQgQz5iZVItIA-oHn_M7BI-utvjUWUSsKVFaLPEucAkUQ","token_type":"bearer","expires_in":1209599,"userName":"d3375b68-9128-4afd-852e-d3e469193338",".issued":"Sat, 29 Dec 2018 05:59:56 GMT",".expires":"Sat, 12 Jan 2019 05:59:56 GMT"}
