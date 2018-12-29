@@ -138,7 +138,7 @@ async function handleCard(name, sort) {
 
         //handle differing rarity in same series
         if(card.diffRarity) { 
-          message += "("+curr.rarity+")";
+          message += "("+card.rarity+")";
         }
         
         if(card.lowPrice) { message += " low:$" + card.lowPrice.toFixed(2); }
