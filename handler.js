@@ -161,15 +161,15 @@ function deliverPrices(name) {
       });
       //console.log(cardIndex);
 
-      results.prices.forEach(function(prices, i) {
+      results.prices.forEach(function(price, i) {
         var id = results.prices[i].productId;
         results.prices[i].name = cardIndex[id].name;
-
+        results.prices[i].subTypeName = abbrvEd(price.subTypeName);
         //extended values
         cardIndex[id].extendedData.forEach(function(eData, j) {
           console.log(eData);
           if(eData.name == "Number") { results.prices[i].series = eData.value; }
-          if(eData.name == "Rarity") { results.prices[i].rarity = abbrevRarity(eData.value); }
+          if(eData.name == "Rarity") { results.prices[i].rarity = abbrvRarity(eData.value); }
         })
         // results.prices[j].series = cardIndex[id].extendedData[0].value;
         // results.prices[j].rarity = cardIndex[id].extendedData[1].value;
@@ -182,7 +182,7 @@ function deliverPrices(name) {
   });
 }
 
-function abbrevRarity(rarity) {
+function abbrvRarity(rarity) {
   if(rarity == null) {
     return;
   }
@@ -210,6 +210,35 @@ function abbrevRarity(rarity) {
       break;
     default:
       return;
+      break;
+  }
+}
+
+function abbrvEd(edition) {
+  if(edition == null) {
+    return;
+  }
+  switch(edition) {
+    case "Unlimited":
+      return "Unl";
+      break;
+    case "1st Edition":
+      return "1st";
+      break;
+    case "Limited":
+      return "Ltd";
+      break;
+    case "Promo":
+      return "Promo";
+      break;
+    case "1st Edition - Ultimate":
+      return "1st";
+      break;
+    case "Unlimited - Ultimate":
+      return "Unl";
+      break;
+    default:
+      return edition;
       break;
   }
 }
