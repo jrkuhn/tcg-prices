@@ -169,7 +169,7 @@ function deliverPrices(name) {
         cardIndex[id].extendedData.forEach(function(eData, j) {
           console.log(eData);
           if(eData.name == "Number") { results.prices[i].series = eData.value; }
-          if(eData.name == "Rarity") { results.prices[i].rarity = eData.value; }
+          if(eData.name == "Rarity") { results.prices[i].rarity = abbrevRarity(eData.value); }
         })
         // results.prices[j].series = cardIndex[id].extendedData[0].value;
         // results.prices[j].rarity = cardIndex[id].extendedData[1].value;
@@ -193,19 +193,19 @@ function abbrevRarity(rarity) {
     case "Rare":
       return "R";
       break;
-    case "Super": 
+    case "Super Rare": 
       return "SR";
       break;
-    case "Ultra":
+    case "Ultra Rare":
       return "UR";
       break;
-    case "Secret":
+    case "Secret Rare":
       return "SCR";
       break;
-    case "Ultimate":
+    case "Ultimate Rare":
       return "ULT";
       break;
-    case "Ghost":
+    case "Ghost Rare":
       return "GR";
       break;
     default:
