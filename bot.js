@@ -15,8 +15,10 @@ function respond() {
   var request = JSON.parse(this.req.chunks[0]),
       coolRegex = /\/cool guy$/;
       cardRegex = /[./#?$]{1}[tT]cg[pP]ric[es][es]? (.*)/;
+      pricesRegex = /[./#?$]{1}[pP]ric[es][es]? (.*)/;
       maxRegex = /[./#?$]{1}[mM]ax[pP]ric[es][es]? (.*)/;
-      linkRegex = /[./#?$]{1}[tT]cglink (.*)/;
+      hotRegex = /[./#?$]{1}[hH]ot[pP]ric[es][es]? (.*)/;
+      linkRegex = /[./#?$]{1}[lL]ink (.*)/;
       
   if(request.text) {
     switch(true) {
@@ -26,9 +28,15 @@ function respond() {
         postMessage(coolMsg);
         this.res.end();
         break;
-      case cardRegex.test(request.text):
+      case cardRegex.test(request.text): //Deprecated
         this.res.writeHead(200);
         cardName = request.text.match(cardRegex);
+        handleCard(cardName[1], "Relevance");
+        this.res.end();
+        break;
+      case pricesRegex.test(request.text):
+        this.res.writeHead(200);
+        cardName = request.text.match(pricesRegex);
         handleCard(cardName[1], "Relevance");
         this.res.end();
         break;
@@ -38,6 +46,12 @@ function respond() {
         handleCard(cardName[1], "MinPrice DESC");
         this.res.end();
         break;  
+      case hotRegex.test(request.text):
+        this.res.writeHead(200);
+        cardName = request.text.match(hotRegex);
+        handleCard(cardName[1], "Sales DESC");
+        this.res.end();
+        break;
       case linkRegex.test(request.text):
         this.res.writeHead(200);
         cardName = request.text.match(linkRegex);
@@ -58,7 +72,7 @@ function respond() {
 }
 
 async function handleCard(name, sort) {
-  if(name == null /*|| !validSorts.includes(sort)*/) { console.error("Invalid Name/Sort"); return; }
+  if(name == null || !validSorts.includes(sort)) { console.error("Invalid Name/Sort"); return; }
 
   var results = await handler.deliverPrices(name, sort);
   console.log(results);
