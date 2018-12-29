@@ -1,8 +1,8 @@
-# Sample GroupMe NodeJS Callback Bot
+# TCGprices
 
 ## Introduction
 
-This project shows the capability of a bot to react to messages sent within a group.
+TCGprices is a chatbot for use in GroupMe chatrooms. The bot is able to respond to searches for any tcg product listed on the popular hobby retailer TCGplayer by utilizing their TCGplayer Developer API Endpoints. It can respond with live pricing data in various ways or link directly to TcgPlayer's search page for the desired product.
 
 ## Contents
 
@@ -13,6 +13,7 @@ This project shows the capability of a bot to react to messages sent within a gr
   * [Make changes to the bot](#pull)
     * Pull the code down to your local machine
     * Configure the local environment variables to your bot's credentials
+    * Configure the API requests as desried (by default, it only searches the Yu-Gi-Oh! category)
 
 ## Requirements:
 
@@ -28,14 +29,7 @@ Be sure to log into heroku, using your heroku credentials, then click the link b
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
-You should be taken to a page that looks like this:
-
-![Deploy to Heroku](http://i.groupme.com/837x662.png.36c63698644a4f61a9ff3d5af91caa5e)
-
-Optionally, you can give your app a name, or instead leave
-it blank and let Heroku name it for you (you can change it later).
-
-![Success](https://i.groupme.com/959x932.png.85e7959a8a9a41c6b20f5f6b50aceecb)
+Here you can configure the your new bot's basic information and add it to your heroku account.
 
 
 ## Next, create a GroupMe Bot:
