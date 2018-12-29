@@ -177,6 +177,7 @@ function deliverPrices(name, sort) {
 
       resolve(results);
     }).catch(function(err) {
+      console.log("Justin needs to fix me");
       console.error(err);
     });
   });
