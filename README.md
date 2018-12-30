@@ -105,5 +105,5 @@ Configure the API requests and message formatting as you desrie (by default, it 
 # License
 MIT license
 
-originally forked from GroupMe's helpful nodejs bot tutorial by Pete Mcgrath: 
+Originally forked from GroupMe's helpful nodejs bot tutorial by Pete Mcgrath: 
 https://github.com/groupme/bot-tutorial-nodejs (MIT License)
