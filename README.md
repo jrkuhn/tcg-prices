@@ -2,7 +2,7 @@
 
 ## Introduction
 
-TCGprices is a chatbot for use in GroupMe chatrooms. The bot which is created in Node.js and hosted on Heroku is able to respond to pricing requests from GroupMe chatroom messages for any tcg product listed on the popular hobby retailer TCGplayer by utilizing their TCGAPI Endpoints. It can respond with live pricing data in various ways or link directly to TCGplayer's search page for the desired product.
+TCGprices is  chatbot for use in GroupMe chatrooms. Created in Node.js and hosted on Heroku, the bot is able to respond to pricing requests from GroupMe chatroom messages for any tcg product listed on the popular hobby retailer TCGplayer by utilizing their TCGAPI Endpoints. It can respond with live pricing data sorted in various ways or link directly to TCGplayer's search page for the desired product.
 
 ## Commands
 
