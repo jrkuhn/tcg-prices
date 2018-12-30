@@ -4,6 +4,7 @@
 
 TCGprices is a chatbot for use in GroupMe chatrooms. The bot is able to respond to searches for any tcg product listed on the popular hobby retailer TCGplayer by utilizing their TCGplayer Developer API Endpoints. It can respond with live pricing data in various ways or link directly to TcgPlayer's search page for the desired product.
 
+originally forked from GroupMe's helpful nodejs bot tutorial by Pete Mcgrath: https://github.com/groupme/bot-tutorial-nodejs
 
 # Adding the bot to your chat<a name="deploy"></a>
 
@@ -38,7 +39,7 @@ Fill out the form to create your new bot:
   * Give your bot a name
   * Paste in the url to your newly deployed heroku app
     * `http://your-app-name-here.herokuapp.com/`
-  * (Optional) Give your bot an avatar by providing a url to an image
+  * (Optional) Give your bot an avatar by providing an Avatar URL to an image
   * Click submit
 
 ## Find your Bot ID:<a name="get-bot-id"></a>
@@ -117,4 +118,4 @@ With this value set, the bot running in heroku should now be able to communicate
 TCGprices should now be running in Heroku and is ready to respond to commands in your chat!
 Configure the API requests and message formatting as you desrie (by default, it only searches the Yu-Gi-Oh! category)
 
-forked from GroupMe's helpful nodejs bot tutorial by Pete Mcgrath: https://github.com/groupme/bot-tutorial-nodejs
+
