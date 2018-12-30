@@ -47,39 +47,23 @@ Fill out the form to create your new bot:
 Go here to view all of your bots:
 https://dev.groupme.com/bots
 
-Click on the one you just created.
-
-![Select your new bot](http://i.groupme.com/871x333.png.5a33ef2b6ab74ea59d5aaa5569aaaf23)
-
-On your Bot's page, copy the Bot ID
-
-![Copy your Bot ID](http://i.groupme.com/615x295.png.3256190e86ed4cd7ae6cf09899c1f9a8)
+Click on the Bot Name or Bot ID of the one you just created.
+Your bot's Details page should open.
+Here you can copy the Bot ID for the next configuration steps.
 
 ## Add your Bot ID to the Heroku app:
 
 Go here to see all of your Heroku apps and select the one you just created before:
-
 https://dashboard-next.heroku.com/apps
 
-![Select your heroku app](http://i.groupme.com/920x722.png.46154d6b95f249539c594b129ddb7732)
-
-On your app page, click settings in the top navigation:
-
-![Go to your app's settings](http://i.groupme.com/722x127.png.27c0a2e83c524064bd41bb66df76d14c)
-
-On your app's setting page, find the Config Vars section and click the Reveal Config Vars button:
-
-![Reveal your environment variables](http://i.groupme.com/606x181.png.94d5157963bc419886e98e038e3195c3)
-
-Then click edit:
-
-![Edit your environment variables](http://i.groupme.com/796x212.png.b8979454fc4742c7bae688ac67262755)
-
-Fill out the form to add an environment variable to your app:
-
-  * In the "key" field type: BOT_ID
-  * In the "value" field paste your Bot ID that you copied in the previous steps
-  * Click the save button
+On your app page:
+  * Click *Settings* in the top navigation bar:
+  * Find the Config Vars section and click the *Reveal Config Vars* button:
+  * Find the edit button (pencil icon) and click it
+  * Fill out the form to add an environment variable to your app:
+     ** In the "key" field type: BOT_ID
+     ** In the "value" field paste your Bot ID that you copied in the previous steps
+     ** Click the save button
 
 ![Add the Bot ID environment variable](http://i.groupme.com/784x148.png.5790498a7acd46b289aca2be43e9c84e)
 
