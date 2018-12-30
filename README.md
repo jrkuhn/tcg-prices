@@ -32,24 +32,20 @@ Be sure to log into heroku, using your heroku credentials, then click the link b
 Here you can configure the your new bot's basic information and add it to your heroku account.
 
 
-## Next, create a GroupMe Bot:
+## Creating the GroupMe Bot:
 
 Go to:
 https://dev.groupme.com/session/new
 
 Use your GroupMe credentials to log into the developer site.
 
-![Log into dev.groupme.com](https://i.groupme.com/640x292.png.38c9e590383149c1a01424fc61cdce4e)
-
 Once you have successfully logged in, go to https://dev.groupme.com/bots/new
-
-![Create your new bot](http://i.groupme.com/567x373.png.242d18352d7742858cf9a263f597c5d9)
 
 Fill out the form to create your new bot:
 
-  * Select the group where you want the bot to live
+  * Select the group chat for the bot to reside
   * Give your bot a name
-  * Paste in the url to your newly deply heroku app
+  * Paste in the url to your newly deployed heroku app
     * `http://your-app-name-here.herokuapp.com/`
   * (Optional) Give your bot an avatar by providing a url to an image
   * Click submit
@@ -67,7 +63,7 @@ On your Bot's page, copy the Bot ID
 
 ![Copy your Bot ID](http://i.groupme.com/615x295.png.3256190e86ed4cd7ae6cf09899c1f9a8)
 
-## Add your Bot ID to your Heroku app:
+## Add your Bot ID to the Heroku app:
 
 Go here to see all of your Heroku apps and select the one you just created before:
 
