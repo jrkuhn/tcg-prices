@@ -80,9 +80,11 @@ On your app page:
 ## TCGAPI Configuration
 
 To take full utilization of this application's commands, you will also need to join the TCGplayer Developer Network for access to the TCGAPI: http://developer.tcgplayer.com/developer-application-form.html
+
 Command /link will still work without being in the TCGplayer Developer Network, but the other commands will result in error.
 
 Once accepted, you should opt to similarly create *Config Vars* [as shown previously](#config-vars) for other values in Heroku such as:
+
  | Key | Value |
 | --- | --- |
 | PUBLIC_KEY | your public key received from TCGplayer |
