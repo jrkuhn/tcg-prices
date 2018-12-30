@@ -1,7 +1,6 @@
 {
-  "name": "Cool guy bot",
-  "description": "Basic Groupme Bot written in Node",
-  "repository": "https://github.com/petemcgrath/cool-guy-bot",
-  "logo": "http://www.tailgate365.com/wp-content/uploads/2011/06/tom-hanks-906.jpg",
+  "name": "TCGprices",
+  "description": "Groupme Bot written in Node which responds to card names with corresponding live pricing data",
+  "repository": "https://github.com/jrkuhn/tcg-prices",
   "keywords": []
 }
