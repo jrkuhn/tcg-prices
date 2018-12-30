@@ -116,3 +116,5 @@ With this value set, the bot running in heroku should now be able to communicate
 
 TCGprices should now be running in Heroku and is ready to respond to commands in your chat!
 Configure the API requests and message formatting as you desrie (by default, it only searches the Yu-Gi-Oh! category)
+
+forked from GroupMe's helpful nodejs bot tutorial by Pete Mcgrath: https://github.com/groupme/bot-tutorial-nodejs
