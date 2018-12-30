@@ -10,7 +10,7 @@ TCGprices is a chatbot for use in GroupMe chatrooms. The bot is able to respond 
     * Deploy the code to heroku
     * Create a bot
     * Configure to your bot's credentials
-  * [Make changes to the bot](#pull)
+  * [Make changes to the bot](#custom)
     * Pull the code down to your local machine
     * Configure the local environment variables to your bot's credentials
     * Configure the API requests as desried (by default, it only searches the Yu-Gi-Oh! category)
@@ -91,13 +91,7 @@ Fill out the form to add an environment variable to your app:
 
 ![Add the Bot ID environment variable](http://i.groupme.com/784x148.png.5790498a7acd46b289aca2be43e9c84e)
 
-## Now go test your bot!
-
-Go to GroupMe and type "/cool guy" in the group where your bot lives to see it in action.
-
-![Test your Bot](http://i.groupme.com/821x587.png.7bcf55bed1c64acab83fa2c2ad0b0862)
-
-# Make it your own<a name="pull"></a>
+# Configuring your Bot<a name="custom"></a>
 
 ## Pull the code to your local machine
 
@@ -124,16 +118,10 @@ If your Bot ID is 12345678910, then:
 becomes:
 
     BOT_ID="12345678910"
+    
+With this value set, the bot running in heroku should now be able to communicate with your group chat.
 
-## Start the server
+##  Your bot is now ready!
 
-To test your bot locally, open terminal and run the following command to start a local server.
-
-    $ foreman start
-
-Then navigate to `http://127.0.0.1:5000/` in a browser.
-
-![Local bot](http://i.groupme.com/502x133.png.f06c630467954f5dab4c742dc67b71bf)
-
-## All done! Go play around and make the bot your own.
+TCGprices should now be running in Heroku and is ready to respond to commands in your chat!
 
