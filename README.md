@@ -4,7 +4,8 @@
 
 TCGprices is a chatbot for use in GroupMe chatrooms. The bot is able to respond to searches for any tcg product listed on the popular hobby retailer TCGplayer by utilizing their TCGplayer Developer API Endpoints. It can respond with live pricing data in various ways or link directly to TcgPlayer's search page for the desired product.
 
-originally forked from GroupMe's helpful nodejs bot tutorial by Pete Mcgrath: https://github.com/groupme/bot-tutorial-nodejs
+originally forked from GroupMe's helpful nodejs bot tutorial by Pete Mcgrath: 
+https://github.com/groupme/bot-tutorial-nodejs
 
 # Adding the bot to your chat<a name="deploy"></a>
 
