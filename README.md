@@ -2,7 +2,7 @@
 
 ## Introduction
 
-TCGprices is a chatbot for use in GroupMe chatrooms. The bot which is created in Node.js and hosted in Heroku is able to respond to pricing requests from GroupMe chatroom messages for any tcg product listed on the popular hobby retailer TCGplayer by utilizing their TCGAPI Endpoints. It can respond with live pricing data in various ways or link directly to TcgPlayer's search page for the desired product.
+TCGprices is  chatbot for use in GroupMe chatrooms. Created in Node.js and hosted on Heroku, the bot is able to respond to pricing requests from GroupMe chatroom messages for any tcg product listed on the popular hobby retailer TCGplayer by utilizing their TCGAPI Endpoints. It can respond with live pricing data sorted in various ways or link directly to TCGplayer's search page for the desired product.
 
 ## Commands
 
@@ -61,7 +61,7 @@ Click on the Bot Name or Bot ID of the one you just created.
 Your bot's Details page should open.
 Here you can copy the Bot ID for the next configuration steps.
 
-## Add your Bot ID to the Heroku app:
+## Add your Bot-ID and more in the Heroku app: <a name="config-vars"></a>
 
 Go here to see all of your Heroku apps and select the one you just created before:
 https://dashboard-next.heroku.com/apps
@@ -77,7 +77,28 @@ On your app page:
 
 ![Add the Bot ID environment variable](http://i.groupme.com/784x148.png.5790498a7acd46b289aca2be43e9c84e)
 
-# Configuring your Bot<a name="custom"></a>
+
+## TCGAPI Configuration
+
+To take full utilization of this application's commands, you will also need to join the TCGplayer Developer Network for access to the TCGAPI: http://developer.tcgplayer.com/developer-application-form.html
+
+Command /link will still work without being in the TCGplayer Developer Network, but the other commands will result in error.
+
+Once accepted, you should opt to similarly create *Config Vars* [as shown previously](#config-vars) for other values in Heroku such as:
+
+ | Key | Value |
+| --- | --- |
+| PUBLIC_KEY | your public key received from TCGplayer |
+| PRIVATE_KEY | your private key received from TCGplayer |
+| BEARER_TOKEN | your authorization token requested from TCGAPI |
+| TCG_VERSION | Desired API version of TCGAPI |
+
+If not created in Heroku, these values must be created in a local `.env` file pricing commands to work.
+`.env` is gitignored by default, so if you wish this to be active in the heroku app, it must be removed from from .gitignore first.
+WARNING: You will likely not want these `.env` values public in your repositoty as your developer key is sensitive information, so I advise just configuring them in your private heroku app as described above instead.
+
+
+# Configuring your Bot Locally (Optional)<a name="local"></a>
 
 ## Pull the code to your local machine
 
@@ -89,28 +110,19 @@ And then change directory into the new folder
 
     $ cd YOUR_APP_NAME_HERE
 
-## Configure your local BOT_ID environment variable
+## Configuring your Environment Variables
 
-Open the file `.env` from your local files in your text editor of choice.
-Find where it says "YOUR_BOT_ID_HERE" and replace it with the ID of your new bot.
+(Optional)
+If you wish to test locally, you can save local variables for your BOT-ID and all TCGAPI values in a local file `.env` for the purpose of running the app locally on your computer. 
+Note that the app will not receive callback messages from the GroupMe chat it resides in without a local tunnel, which would have to be set up into this bot by you (I unfortunately have not implemented this yet). 
 
-If you don't know what your Bot ID is, please refer back to [this](#get-bot-id) section,
-where it is explained how to retrieve it.
+While helpful for fast testing without the need to constantly commit and push to Heroku, it is a bit of an ugly workaround.
 
-If your Bot ID is 12345678910, then:
-
-    BOT_ID="YOUR_BOT_ID_HERE"
-
-becomes:
-
-    BOT_ID="12345678910"
-    
-With this value set, the bot running in heroku should now be able to communicate with your group chat.
 
 ##  Your bot is now ready!
 
 TCGprices should now be running in Heroku and is ready to respond to commands in your chat!
-Configure the API requests and message formatting as you desrie (by default, it only searches the Yu-Gi-Oh! category)
+Configure the API requests and message formatting as you desire (by default, it only searches the Yu-Gi-Oh! category)
 
 # License
 MIT license
