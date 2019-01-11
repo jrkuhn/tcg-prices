@@ -9,6 +9,7 @@ TCGprices is a chatbot for use in GroupMe chatrooms. The bot which is created in
 | Command | Description |
 | --- | --- |
 | /price <name> | bot sends pricing data of the search results for <name> sorted by Relevance |
+| /mintprice <name> | bot sends pricing data of Near Mint condition results |
 | /maxprice <name> | bot sends pricing data sorted by Highest Price first |
 | /minprice <name> | bot sends price results sorted by Lowest Price first |
 | /hotprice <name> | bot sends price results sorted by Best Selling first |
