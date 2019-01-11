@@ -10,10 +10,10 @@ TCGprices is  chatbot for use in GroupMe chatrooms. Created in Node.js and hoste
 | --- | --- |
 | /price \<name\> | bot sends pricing data of the search results for <name> sorted by Relevance |
 | /mintprice \<name\> | bot sends pricing data of Near Mint condition results |
-| /maxprice <name> | bot sends pricing data sorted by Highest Price first |
-| /minprice <name> | bot sends price results sorted by Lowest Price first |
-| /hotprice <name> | bot sends price results sorted by Best Selling first |
-| /link <name> | bot sends a link to the TCGplayer.com search results page for <name> |
+| /maxprice \<name\> | bot sends pricing data sorted by Highest Price first |
+| /minprice \<name\> | bot sends price results sorted by Lowest Price first |
+| /hotprice \<name\> | bot sends price results sorted by Best Selling first |
+| /link \<name\> | bot sends a link to the TCGplayer.com search results page for <name> |
 | /help | bot sends a list of shortened descriptions for all commands |
 
 # Adding the bot to your chat<a name="deploy"></a>
